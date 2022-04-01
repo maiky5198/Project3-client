@@ -13,6 +13,10 @@ Technologies:
 - CSS
 - MongoDB
 
+# Installation Instructions
+1. Clone this repository.
+2. Navigate into the AdventureR-app folder.
+
 
 
 User story:
