@@ -6,6 +6,14 @@ WireFrames
 ![alt text](/Screen%20Shot%202022-04-01%20at%2013.08.36.png)
 ![alt tex](/Screen%20Shot%202022-04-01%20at%2013.17.41.png)
 
+Technologies:
+- React
+- Mongoose
+- MapBox
+- CSS
+- MongoDB
+
+
 
 User story:
 - As a user I want to enter an email and password to sign up/sign in
