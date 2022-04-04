@@ -14,7 +14,6 @@ code {
   background-color: aqua;
 }
 
-#custom-nav {
-  background-color: black;
-  color: white;
+.bg-myOrange {
+  background-color: orange;
 }

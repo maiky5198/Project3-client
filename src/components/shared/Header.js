@@ -12,21 +12,21 @@ const linkStyle = {
 }
 const authenticatedOptions = (
 	<>
-		<Link to='/adventures' style={linkStyle}>
+		<Link className="m-2" to='/adventures' style={linkStyle}>
 				All Adventures
 			</Link>
-		<Nav.Item>
+		<Nav.Item className="m-2">
 		    <Link to='addAdventure' style={linkStyle}>Add Adventure</Link>
         </Nav.Item>
-		<Nav.Item>
+		<Nav.Item className="m-2">
 		    <Link to='/adventures/mine' style={linkStyle}>My Adventures</Link>
         </Nav.Item>
-		<Nav.Item>
+		<Nav.Item className="m-2">
 			<Link to='change-password' style={linkStyle}>
 				Change Password
 			</Link>
 		</Nav.Item>
-		<Nav.Item>
+		<Nav.Item className="m-2">
 			<Link to='sign-out' style={linkStyle}>
 				Sign Out
 			</Link>
@@ -36,10 +36,10 @@ const authenticatedOptions = (
 
 const unauthenticatedOptions = (
 	<>
-        <Nav.Item>
+        <Nav.Item className="m-2">
 		    <Link to='sign-up' style={linkStyle}>Sign Up</Link>
         </Nav.Item>
-        <Nav.Item>
+        <Nav.Item className="m-2">
 		    <Link to='sign-in' style={linkStyle}>Sign In</Link>
         </Nav.Item>
 	</>
@@ -54,7 +54,7 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-	<Navbar id='custom-nav' bg='dark' variant='dark' expand='md'>
+	<Navbar className='custom-nav' bg='myOrange' variant='light' expand='md'>
 		<Navbar.Brand>
             <Link to='/' style={linkStyle}>
                 AdventureR
