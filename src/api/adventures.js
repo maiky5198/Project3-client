@@ -12,7 +12,7 @@ export const getMyAdventures = (user) => {
 }
 
 //show function
-export const showAdventure = (adventureId) => {
+export const getOneAdventure = (adventureId) => {
     return axios(`${apiUrl}/adventures/${adventureId}`)
 }
 
