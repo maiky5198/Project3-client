@@ -14,7 +14,7 @@ import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import CreateAdventure from './components/adventures/CreateAdventure'
 import ShowAdventures from './components/adventures/ShowAdventures'
-import MyAdventures from './components/adventures/myAdventures'
+import MyAdventures from './components/adventures/MyAdventures'
 
 const App = () => {
 
