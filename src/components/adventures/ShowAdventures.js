@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { getOneAdventure, removeAdventure } from '../../api/adventures'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { Spinner, Container, Card, Button } from 'react-bootstrap'
 
 const ShowAdventures = (props) => {
@@ -8,6 +8,7 @@ const ShowAdventures = (props) => {
     const [adventure, setAdventure] = useState(null)
     const [modalOpen, setModalOpen] = useState(false)
     const [updated, setUpdated] = useState(false)
+    const navigate = useNavigate()
     console.log('props in showAdventures', props)
     const { id } = useParams()
     const {user} = props
@@ -21,6 +22,7 @@ const ShowAdventures = (props) => {
 
     const removeTheAdventure = () =>{
         removeAdventure(user, adventure._id)
+            .then(() => {navigate(`/`)})
             // .then(()=>{
             //     msgAlert({
             //         heading: 'Adventure removed!',
@@ -63,7 +65,7 @@ const ShowAdventures = (props) => {
                             Delete Adventure
                         </Button>
 
-                    </Card.Footer>
+                </Card.Footer>
             </Card>
         </Container>
     )
