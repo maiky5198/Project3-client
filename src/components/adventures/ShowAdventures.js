@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from 'react'
-import { getOneAdventure, removeAdventure } from '../../api/adventures'
+import { getOneAdventure, removeAdventure, updateAdventure } from '../../api/adventures'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Spinner, Container, Card, Button } from 'react-bootstrap'
+import EditAdventureModal from './EditAdventureModal'
 
 const ShowAdventures = (props) => {
 
     const [adventure, setAdventure] = useState(null)
     const [modalOpen, setModalOpen] = useState(false)
+    const [gearModalOpen, setGearModalOpen] = useState(false)
     const [updated, setUpdated] = useState(false)
     const navigate = useNavigate()
     console.log('props in showAdventures', props)
@@ -23,15 +25,11 @@ const ShowAdventures = (props) => {
     const removeTheAdventure = () =>{
         removeAdventure(user, adventure._id)
             .then(() => {navigate(`/`)})
-            // .then(()=>{
-            //     msgAlert({
-            //         heading: 'Adventure removed!',
-            //         message: showPetSuccess,
-            //         variant: 'success',
-            //     })
-            // })
             .catch(console.error)
     }
+
+    let gearCards
+    let comments
 
     if (!adventure) {
         return (
@@ -42,17 +40,16 @@ const ShowAdventures = (props) => {
             </Container>
         )
     }
-    console.log("Adventure owner", adventure.owner)
-    console.log("user id", user._id)
     return (
+        <>
         <Container className="fluid">
             <Card>
                 <Card.Header>{adventure.name}</Card.Header>
                 <Card.Body>
                     <Card.Text>
                         <small>Type: {adventure.type}</small><br/>
-                        <small>Time: {adventure.time}</small><br/>
-                        <small>Distance: {adventure.distance}</small><br/>
+                        <small>Time: {adventure.time} minutes</small><br/>
+                        <small>Distance: {adventure.distance} miles</small><br/>
                         <small>Difficulty Level: {adventure.difficultyLevel}</small><br/>
                         <small>Location: {adventure.location}</small><br/>
                         {/* <small>Gear: {adventure.gear}</small><br/> */}
@@ -71,6 +68,17 @@ const ShowAdventures = (props) => {
                 }
             </Card>
         </Container>
+        <EditAdventureModal 
+        adventure = {adventure}
+        show={modalOpen}
+        user={user}
+        // msgAlert={msg}
+        triggerRefresh={() => setUpdated(prev => !prev)}
+        updateAdventure={updateAdventure}
+        handleClose={() => setModalOpen(false)}
+
+        />
+        </>
     )
 }
 
