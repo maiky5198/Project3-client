@@ -43,10 +43,9 @@ const AdventureForm = (props) => {
                     onChange={handleChange}
                 />
                 <Form.Label>Difficulty Level</Form.Label>
-                <p>{difficulty}</p>
+                <p>{adventure.difficultyLevel}</p>
                    <Form.Control 
                    type="range" 
-                   onChange={handleChange} 
                    value={adventure.difficultyLevel}
                    name="difficultyLevel" 
                    className="form-range" 
