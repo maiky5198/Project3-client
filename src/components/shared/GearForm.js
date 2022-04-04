@@ -21,12 +21,13 @@ const GearForm = (props) => {
                     placeholder="what is the quantity of gear needed?"
                     value={gear.quantity}
                     name='quantity'
+                    type="number"
                     onChange={handleChange}
                 />
                 <Form.Label>Description</Form.Label>
                 <Form.Control 
                     placeholder="description of the gear needed?"
-                    value={toy.description}
+                    value={gear.description}
                     name='description'
                     onChange={handleChange}
                 />
