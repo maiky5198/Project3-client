@@ -8,7 +8,13 @@ export const getAllAdventures = () => {
 
 // index of user's adventures function
 export const getMyAdventures = (user) => {
-    return axios(`${apiUrl}/adventures/mine`)
+    return axios({
+        url: `${apiUrl}/adventures/mine`,
+        method: 'GET',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        }
+    })
 }
 
 //show function
