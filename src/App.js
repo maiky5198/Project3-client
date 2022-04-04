@@ -15,6 +15,7 @@ import ChangePassword from './components/auth/ChangePassword'
 import CreateAdventure from './components/adventures/CreateAdventure'
 import ShowAdventures from './components/adventures/ShowAdventures'
 import MyAdventures from './components/adventures/MyAdventures'
+import IndexAdventures from './components/adventures/IndexAdventures'
 
 const App = () => {
 
@@ -48,6 +49,7 @@ const App = () => {
 				<Header user={user} />
 				<Routes>
 					<Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
+					<Route path='/adventures' element={<IndexAdventures msgAlert={msgAlert} user={user} />} />
 					<Route
 						path='/sign-up'
 						element={<SignUp msgAlert={msgAlert} setUser={setUser} />}
