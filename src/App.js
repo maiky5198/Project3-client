@@ -13,7 +13,7 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import CreateAdventure from './components/adventures/CreateAdventure'
-import ShowAdventures from './components/adventures/showAdventures'
+import ShowAdventures from './components/adventures/ShowAdventures'
 
 const App = () => {
 
