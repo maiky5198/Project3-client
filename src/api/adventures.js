@@ -41,7 +41,7 @@ export const updateAdventure = (user, updatedAdventure) => {
     console.log('user', user)
     console.log('this is updatedAdventure', updatedAdventure)
     return axios({
-        url: `${apiUrl}/adventures/${updatedAdventure.id}`,
+        url: `${apiUrl}/adventures/${updatedAdventure._id}`,
         method: 'PATCH',
         headers: {
             Authorization: `Token token=${user.token}`
