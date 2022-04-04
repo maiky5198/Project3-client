@@ -16,7 +16,7 @@ const EditAdventureModal = (props) => {
             console.log('etarget type', e.target.type)
             console.log('this is e.target checked', e.target.checked)
             if (e.target.type === 'number') {
-                value = parseInt(e.target.value)
+                value = parseFloat(e.target.value)
             }
 
             const updatedValue = { [name]: value }
@@ -37,12 +37,12 @@ const EditAdventureModal = (props) => {
             // if create is successful, we should navigate to the show page
             .then(() => handleClose())
             // then we send a success message
-            .then(() =>
-                msgAlert({
-                    heading: 'Adventure Updated! Success!',
-                    message: 'Adventure successfully edited!',
-                    variant: 'success',
-                }))
+            // .then(() =>
+            //     msgAlert({
+            //         heading: 'Adventure Updated! Success!',
+            //         message: 'Adventure successfully edited!',
+            //         variant: 'success',
+            //     }))
             .then(() => triggerRefresh())
             // if there is an error, we'll send an error message
             .catch(console.error)
