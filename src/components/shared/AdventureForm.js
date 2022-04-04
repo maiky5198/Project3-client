@@ -38,6 +38,7 @@ const AdventureForm = (props) => {
                     placeholder="what was the distance of your adventure (miles)?"
                     value={adventure.distance}
                     name='distance'
+                    type="number"
                     onChange={handleChange}
                 />
                 <Form.Label>difficultyLevel</Form.Label>

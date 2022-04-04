@@ -45,12 +45,7 @@ const EditAdventureModal = (props) => {
                 }))
             .then(() => triggerRefresh())
             // if there is an error, we'll send an error message
-            .catch(() =>
-                msgAlert({
-                    heading: 'Oh No!',
-                    message: 'Edit was not successful!',
-                    variant: 'danger',
-                }))
+            .catch(console.error)
         console.log('this is the adventure', adventure)
     }
 
