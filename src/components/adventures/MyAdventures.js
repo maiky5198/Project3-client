@@ -16,17 +16,20 @@ const MyAdventures = (props) => {
     const {user, msgAlert} = props
 
     useEffect(() => {
-        getMyAdventures()
+        console.log('user id', user._id)
+        getMyAdventures(user)
             .then(res => {
-                console.log('res.data.adventures', res.data.myAdventures)
-                setMyAdventures(res.data.myAdventures)
+                console.log('res.data', res.data)
+                setMyAdventures(res.data.adventures)
             })
+            .catch(console.error)
             
     }, [])
 
     if (!myAdventures) {
         return <p>loading...</p>
-    } else if (myAdventures.length === 0) {
+    }
+    if (myAdventures.length === 0) {
         return <p>You have no adventures, go explore!</p>
     }
 
