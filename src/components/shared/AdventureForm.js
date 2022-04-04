@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { Form, Container, Button } from 'react-bootstrap'
 
 const AdventureForm = (props) => {
+    const [difficulty, setdifficulty] = useState(0)
     
     const {adventure, handleChange, handleSubmit, heading} = props
 
@@ -41,18 +42,20 @@ const AdventureForm = (props) => {
                     type="number"
                     onChange={handleChange}
                 />
-                <Form.Label>Difficulty Level </Form.Label> 
+                <Form.Label>Difficulty Level</Form.Label>
+                <p>{difficulty}</p>
                    <Form.Control 
                    type="range" 
                    onChange={handleChange} 
-                   value={adventure.difficultyLevel} 
+                   value={adventure.difficultyLevel}
                    name="difficultyLevel" 
                    className="form-range" 
                    min="0" 
                    max="5" 
                    step="1" 
                    id="customRange3"
-                />
+                   onChange={handleChange}
+                   />
                 {/* <Form.Label>Difficulty Level</Form.Label>
                 <Form.Control 
                     // placeholder="how difficult was your adventure on a scale of 0-5?"
