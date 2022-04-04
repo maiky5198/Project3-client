@@ -52,7 +52,7 @@ const MyAdventures = (props) => {
 
     return (
         <>
-            <h3>All of the adventures</h3>
+            <h3>All of my adventures</h3>
             <div style={cardContainerLayout}>
                 {adventureCards}
             </div>
