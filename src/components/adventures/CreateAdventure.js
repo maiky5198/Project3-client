@@ -42,7 +42,7 @@ const CreateAdventure = (props) => {
 
         createAdventure(user, adventure)
             // if create is successful, we should navigate to the show page
-            .then(res => {navigate(`/adventures/${res.data.adventure.id}`)})
+            .then(res => {navigate(`/adventures/${res.data.adventure._id}`)})
             // then we send a success message
             .then(() =>
                 msgAlert({
