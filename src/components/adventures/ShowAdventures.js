@@ -38,7 +38,7 @@ const ShowAdventures = (props) => {
             gearCards = adventure.gear.map(gearItem => (
                 // need to pass all props needed for updateToy func in edit modal
                 <ShowGear 
-                    key={gearItem._id} gear={gearItem} triggerRefresh={() => setUpdated(prev => !prev)}
+                    key={gearItem._id} gear={gearItem} user={user} adventure={adventure} triggerRefresh={() => setUpdated(prev => !prev)}
                 />
                 // <p key={gearItem._id}>{gearItem.name}</p>
             ))
@@ -54,57 +54,61 @@ const ShowAdventures = (props) => {
             </Container>
         )
     }
-    return (
-        <>
-        <Container className="fluid">
-            <Card>
-                <Card.Header>{adventure.name}</Card.Header>
-                <Card.Body>
-                    <Card.Text>
-                        <small>Type: {adventure.type}</small><br/>
-                        <small>Time: {adventure.time} minutes</small><br/>
-                        <small>Distance: {adventure.distance} miles</small><br/>
-                        <small>Difficulty Level: {adventure.difficultyLevel}</small><br/>
-                        <small>Location: {adventure.location}</small><br/>
 
-                    </Card.Text>
-                </Card.Body>
-                {adventure.owner == user._id &&       
-                <Card.Footer>
-                        <Button onClick={() => setGearModalOpen(true)} className="m-2" variant="info">
-                            Add gear!
-                        </Button>
-                        <Button onClick={() => setModalOpen(true)} className="m-2" variant="warning">
-                            Edit Adventure
-                        </Button>
-                        <Button className="m-2" variant="danger" onClick={removeTheAdventure}>
-                            Delete Adventure
-                        </Button>
-
-                </Card.Footer>                        
-                }
-                {gearCards}
-            </Card>
-        </Container>
-        <EditAdventureModal 
-        adventure = {adventure}
-        show={modalOpen}
-        user={user}
-        // msgAlert={msg}
-        triggerRefresh={() => setUpdated(prev => !prev)}
-        updateAdventure={updateAdventure}
-        handleClose={() => setModalOpen(false)}
-
-        />
-        <AddGearModal
-            show={gearModalOpen}
+    if(adventure.name){
+        return (
+            <>
+            <Container className="fluid">
+                <Card>
+                    <Card.Header>{adventure.name}</Card.Header>
+                    <Card.Body>
+                        <Card.Text>
+                            <small>Type: {adventure.type}</small><br/>
+                            <small>Time: {adventure.time} minutes</small><br/>
+                            <small>Distance: {adventure.distance} miles</small><br/>
+                            <small>Difficulty Level: {adventure.difficultyLevel}</small><br/>
+                            <small>Location: {adventure.location}</small><br/>
+    
+                        </Card.Text>
+                    </Card.Body>
+                    {adventure.owner == user._id &&       
+                    <Card.Footer>
+                            <Button onClick={() => setGearModalOpen(true)} className="m-2" variant="info">
+                                Add gear!
+                            </Button>
+                            <Button onClick={() => setModalOpen(true)} className="m-2" variant="warning">
+                                Edit Adventure
+                            </Button>
+                            <Button className="m-2" variant="danger" onClick={removeTheAdventure}>
+                                Delete Adventure
+                            </Button>
+    
+                    </Card.Footer>                        
+                    }
+                    {gearCards}
+                </Card>
+            </Container>
+            <EditAdventureModal 
+            adventure = {adventure}
+            show={modalOpen}
             user={user}
-            adventure={adventure}
+            // msgAlert={msg}
             triggerRefresh={() => setUpdated(prev => !prev)}
-            handleClose={() => setGearModalOpen(false)}
-        />
-        </>
-    )
+            updateAdventure={updateAdventure}
+            handleClose={() => setModalOpen(false)}
+    
+            />
+            <AddGearModal
+                show={gearModalOpen}
+                user={user}
+                adventure={adventure}
+                triggerRefresh={() => setUpdated(prev => !prev)}
+                handleClose={() => setGearModalOpen(false)}
+            />
+            </>
+        )
+
+    }
 }
 
 export default ShowAdventures

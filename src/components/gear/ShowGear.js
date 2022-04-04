@@ -5,7 +5,7 @@ import { removeGear } from '../../api/gear'
 
 const ShowGear = (props) => {
     // most of these are simply to pass to edit modal
-    const {gear} = props
+    const {gear, user, adventure, triggerRefresh} = props
 
     // const [showEditModal, setShowEditModal] = useState(false)
 
@@ -19,23 +19,18 @@ const ShowGear = (props) => {
     //     }
     // }
 
-    // const destroyToy = () => {
-    //     removeToy(user, pet._id, toy._id)
-    //         .then(() =>
-    //             msgAlert({
-    //                 heading: 'Toy updated!',
-    //                 message: 'great! the pet loves it!',
-    //                 variant: 'success',
-    //             }))
-    //         .then(() => triggerRefresh())
-    //         // if there is an error, we'll send an error message
-    //         .catch(() =>
-    //             msgAlert({
-    //                 heading: 'Oh No!',
-    //                 message: 'that aint it',
-    //                 variant: 'danger',
-    //         }))
-    // }
+    const destroyGear = () => {
+        removeGear(user, adventure._id, gear._id)
+            // .then(() =>
+            //     msgAlert({
+            //         heading: 'Toy updated!',
+            //         message: 'great! the pet loves it!',
+            //         variant: 'success',
+            //     }))
+            .then(() => triggerRefresh())
+            // if there is an error, we'll send an error message
+            .catch(console.error)
+    }
 
     // console.log(setBgCondition(toy.condition))
     
@@ -48,20 +43,20 @@ const ShowGear = (props) => {
                     <small>{gear.description}</small><br/>
                     <Card.Footer >
                     </Card.Footer>
-                    {/* {
-                        user && (user.id === pet.owner.id) 
+                    {
+                        user && (user.id === adventure.owner.id) 
                         ?
                             <>
-                                <Button variant="warning" onClick={() => setShowEditModal(true)}>
+                                {/* <Button variant="warning" onClick={() => setShowEditModal(true)}>
                                     Edit Toy
-                                </Button>
-                                <Button onClick={() => destroyToy()}variant="danger">
-                                    Delete Toy
+                                </Button> */}
+                                <Button onClick={() => destroyGear()}variant="danger">
+                                    Delete Gear
                                 </Button>
                             </>
                         :
                         null
-                    } */}
+                    }
                 </Card.Body>
             </Card>
             {/* <EditToyModal 
