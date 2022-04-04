@@ -42,12 +42,12 @@ const AdventureForm = (props) => {
                     onChange={handleChange}
                 />
                 <label for="customRange3" 
-                   class="form-label">Difficulty Level</label>
+                   className="form-label">Difficulty Level</label>
                    <input type="range" 
                    onChange={handleChange} 
                    value={adventure.difficultyLevel} 
                    name="difficultyLevel" 
-                   class="form-range" 
+                   className="form-range" 
                    min="0" 
                    max="5" 
                    step="1" 
