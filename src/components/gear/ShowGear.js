@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { Card, Button } from 'react-bootstrap'
-// import EditToyModal from './EditToyModal'
+import EditGearModal from './EditGearModal'
 import { removeGear } from '../../api/gear'
 
 const ShowGear = (props) => {
     // most of these are simply to pass to edit modal
     const {gear, user, adventure, triggerRefresh} = props
 
-    // const [showEditModal, setShowEditModal] = useState(false)
+    const [showEditModal, setShowEditModal] = useState(false)
 
     // const setBgCondition = (cond) => {
     //     if (cond === 'new') {
@@ -21,18 +21,11 @@ const ShowGear = (props) => {
 
     const destroyGear = () => {
         removeGear(user, adventure._id, gear._id)
-            // .then(() =>
-            //     msgAlert({
-            //         heading: 'Toy updated!',
-            //         message: 'great! the pet loves it!',
-            //         variant: 'success',
-            //     }))
             .then(() => triggerRefresh())
             // if there is an error, we'll send an error message
             .catch(console.error)
     }
 
-    // console.log(setBgCondition(toy.condition))
     
     return (
         <>
@@ -47,9 +40,9 @@ const ShowGear = (props) => {
                         user && (user.id === adventure.owner.id) 
                         ?
                             <>
-                                {/* <Button variant="warning" onClick={() => setShowEditModal(true)}>
-                                    Edit Toy
-                                </Button> */}
+                                <Button variant="warning" onClick={() => setShowEditModal(true)}>
+                                    Edit Gear
+                                </Button>
                                 <Button onClick={() => destroyGear()}variant="danger">
                                     Delete Gear
                                 </Button>
@@ -59,15 +52,14 @@ const ShowGear = (props) => {
                     }
                 </Card.Body>
             </Card>
-            {/* <EditToyModal 
+            <EditGearModal 
                 user={user}
-                pet={pet}
-                toy={toy}
+                adventure={adventure}
+                gear={gear}
                 show={showEditModal}
                 handleClose={() => setShowEditModal(false)}
-                msgAlert={msgAlert}
                 triggerRefresh={triggerRefresh}
-            /> */}
+            />
         </>
     )
 }
