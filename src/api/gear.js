@@ -4,35 +4,38 @@ import axios from 'axios'
 
 
 // POST -> create function
-export const addComment = (user, adventureId, newComment) => {
+export const addGear = (user, adventureId, newGear) => {
     console.log('user', user)
-    console.log('this is newComment', newComment)
+    console.log('this is newGear', newGear)
     return axios({
-        url: `${apiUrl}/comments/${adventureId}`,
+        url: `${apiUrl}/gear/${adventureId}`,
         method: 'POST',
-        data: { comment: newComment }
+        headers: {
+            Authorization: `Token token=${user.token}`
+        },
+        data: { gear: newGear }
     })
 }
 
-// // PATCH -> update function
-// export const updateGear = (user, adventureId, gearId, updatedGear) => {
-//     console.log('user', user)
-//     console.log('this is updatedGear', updatedGear)
-//     return axios({
-//         url: `${apiUrl}/gear/${adventureId}/${gearId}`,
-//         method: 'PATCH',
-//         headers: {
-//             Authorization: `Token token=${user.token}`
-//         },
-//         data: { gear: updatedGear }
-//     })
-// }
+// PATCH -> update function
+export const updateGear = (user, adventureId, gearId, updatedGear) => {
+    console.log('user', user)
+    console.log('this is updatedGear', updatedGear)
+    return axios({
+        url: `${apiUrl}/gear/${adventureId}/${gearId}`,
+        method: 'PATCH',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        },
+        data: { gear: updatedGear }
+    })
+}
 
 // DELETE -> remove function
-export const removeComment = (user, adventureId, commentId) => {
+export const removeGear = (user, adventureId, gearId) => {
     console.log('user', user)
     return axios({
-        url: `${apiUrl}/comments/${adventureId}/${commentId}`,
+        url: `${apiUrl}/gear/${adventureId}/${gearId}`,
         method: 'DELETE',
         headers: {
             Authorization: `Token token=${user.token}`

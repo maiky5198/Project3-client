@@ -3,6 +3,8 @@ import { getOneAdventure, removeAdventure, updateAdventure } from '../../api/adv
 import { useParams, useNavigate } from 'react-router-dom'
 import { Spinner, Container, Card, Button } from 'react-bootstrap'
 import EditAdventureModal from './EditAdventureModal'
+import AddGearModal from '../gear/AddGearModal'
+import ShowGear from '../gear/ShowGear'
 
 const ShowAdventures = (props) => {
 
@@ -20,7 +22,7 @@ const ShowAdventures = (props) => {
         getOneAdventure(id)
             .then(res => setAdventure(res.data.adventure))
             .catch(console.error)
-    }, [id])
+    }, [updated])
 
     const removeTheAdventure = () =>{
         removeAdventure(user, adventure._id)
@@ -30,6 +32,18 @@ const ShowAdventures = (props) => {
 
     let gearCards
     let comments
+
+    if(adventure){
+        if (adventure.gear.length > 0) {
+            gearCards = adventure.gear.map(gearItem => (
+                // need to pass all props needed for updateToy func in edit modal
+                <ShowGear 
+                    key={gearItem._id} gear={gearItem} triggerRefresh={() => setUpdated(prev => !prev)}
+                />
+                // <p key={gearItem._id}>{gearItem.name}</p>
+            ))
+        }
+    }
 
     if (!adventure) {
         return (
@@ -52,11 +66,14 @@ const ShowAdventures = (props) => {
                         <small>Distance: {adventure.distance} miles</small><br/>
                         <small>Difficulty Level: {adventure.difficultyLevel}</small><br/>
                         <small>Location: {adventure.location}</small><br/>
-                        {/* <small>Gear: {adventure.gear}</small><br/> */}
+
                     </Card.Text>
                 </Card.Body>
                 {adventure.owner == user._id &&       
                 <Card.Footer>
+                        <Button onClick={() => setGearModalOpen(true)} className="m-2" variant="info">
+                            Add gear!
+                        </Button>
                         <Button onClick={() => setModalOpen(true)} className="m-2" variant="warning">
                             Edit Adventure
                         </Button>
@@ -64,8 +81,9 @@ const ShowAdventures = (props) => {
                             Delete Adventure
                         </Button>
 
-                </Card.Footer>
+                </Card.Footer>                        
                 }
+                {gearCards}
             </Card>
         </Container>
         <EditAdventureModal 
@@ -77,6 +95,13 @@ const ShowAdventures = (props) => {
         updateAdventure={updateAdventure}
         handleClose={() => setModalOpen(false)}
 
+        />
+        <AddGearModal
+            show={gearModalOpen}
+            user={user}
+            adventure={adventure}
+            triggerRefresh={() => setUpdated(prev => !prev)}
+            handleClose={() => setGearModalOpen(false)}
         />
         </>
     )
