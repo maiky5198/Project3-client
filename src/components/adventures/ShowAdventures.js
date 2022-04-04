@@ -42,7 +42,8 @@ const ShowAdventures = (props) => {
             </Container>
         )
     }
-
+    console.log("Adventure owner", adventure.owner)
+    console.log("user id", user._id)
     return (
         <Container className="fluid">
             <Card>
@@ -57,6 +58,7 @@ const ShowAdventures = (props) => {
                         {/* <small>Gear: {adventure.gear}</small><br/> */}
                     </Card.Text>
                 </Card.Body>
+                {adventure.owner == user._id &&       
                 <Card.Footer>
                         <Button onClick={() => setModalOpen(true)} className="m-2" variant="warning">
                             Edit Adventure
@@ -66,6 +68,7 @@ const ShowAdventures = (props) => {
                         </Button>
 
                 </Card.Footer>
+                }
             </Card>
         </Container>
     )
