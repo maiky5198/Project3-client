@@ -10,6 +10,9 @@ const linkStyle = {
 }
 const authenticatedOptions = (
 	<>
+		<Link to='/adventures' style={linkStyle}>
+				All Adventures
+			</Link>
 		<Nav.Item>
 		    <Link to='addAdventure' style={linkStyle}>Add Adventure</Link>
         </Nav.Item>
@@ -43,9 +46,7 @@ const unauthenticatedOptions = (
 const alwaysOptions = (
 	<>
 		<Nav.Link>
-			<Link to='/' style={linkStyle}>
-				Home
-			</Link>
+			
 		</Nav.Link>
 	</>
 )
