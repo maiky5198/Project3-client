@@ -7,7 +7,9 @@ const messages = {
 	changePasswordSuccess: 'Password changed successfully!',
 	changePasswordFailure:'Failed to change passwords. Check your old password and try again.',
 	indexAdventuresSuccess: "Adventures retrieved successfully!",
-	indexAdventuresFailure: "Failed to get adventures. Please try again."
+	indexAdventuresFailure: "Failed to get adventures. Please try again.",
+	createAdventureSuccess: "Adventure created successfully!",
+	createAdventureFailure: "Something went wrong. Please try again."
 }
 
 module.exports = messages
