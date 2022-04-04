@@ -13,6 +13,7 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import CreateAdventure from './components/adventures/CreateAdventure'
+import ShowAdventures from './components/adventures/showAdventures'
 
 const App = () => {
 
@@ -77,6 +78,11 @@ const App = () => {
 						</RequireAuth>
 					}
 				/>
+			<Route
+					path='/adventures/:id'
+					element={<ShowAdventures msgAlert={msgAlert} user={user} />}
+				/>
+				
 				</Routes>
 				{msgAlerts.map((msgAlert) => (
 					<AutoDismissAlert
