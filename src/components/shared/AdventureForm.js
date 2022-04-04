@@ -41,16 +41,32 @@ const AdventureForm = (props) => {
                     type="number"
                     onChange={handleChange}
                 />
-                <Form.Label>difficultyLevel</Form.Label>
+                <label for="customRange3" 
+                   class="form-label">Difficulty Level</label>
+                   <input type="range" 
+                   onChange={handleChange} 
+                   value={adventure.difficultyLevel} 
+                   name="difficultyLevel" 
+                   class="form-range" 
+                   min="0" 
+                   max="5" 
+                   step="1" 
+                   id="customRange3">
+                   </input>
+                {/* <Form.Label>Difficulty Level</Form.Label>
                 <Form.Control 
-                    placeholder="how difficult was your adventure on a scale of 0-5?"
+                    // placeholder="how difficult was your adventure on a scale of 0-5?"
                     value={adventure.difficultyLevel}
-                    type="number"
+                    class="form-range"
+                    type="range"
                     name='difficultyLevel'
+                    step="1"
                     min="0"
                     max="5"
+                    for="customRange3"
+                    id="customRange3"
                     onChange={handleChange}
-                />
+                /> */}
                 <Form.Label>Location</Form.Label>
                 <Form.Control 
                     placeholder="where was your adventure?"
@@ -58,7 +74,7 @@ const AdventureForm = (props) => {
                     name='location'
                     onChange={handleChange}
                 />
-                <Form.Label>Geolocation</Form.Label>
+                <Form.Label>Geo location</Form.Label>
                 <Form.Control 
                     placeholder="latitude and longitude of adventure?"
                     value={adventure.geolocation}
