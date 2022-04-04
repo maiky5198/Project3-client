@@ -21,6 +21,7 @@ const MyAdventures = (props) => {
                 console.log('res.data.adventures', res.data.adventures)
                 setMyAdventures(res.data.adventures)
             })
+            
     }, [])
 
     if (!myAdventures) {

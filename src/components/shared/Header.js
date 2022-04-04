@@ -13,6 +13,9 @@ const authenticatedOptions = (
 		    <Link to='addAdventure' style={linkStyle}>Add Adventure</Link>
         </Nav.Item>
 		<Nav.Item>
+		    <Link to='/adventures/mine' style={linkStyle}>My Adventures</Link>
+        </Nav.Item>
+		<Nav.Item>
 			<Link to='change-password' style={linkStyle}>
 				Change Password
 			</Link>
@@ -50,7 +53,7 @@ const Header = ({ user }) => (
 	<Navbar bg='primary' variant='dark' expand='md'>
 		<Navbar.Brand>
             <Link to='/' style={linkStyle}>
-                react-auth-template
+                AdventureR
             </Link>
         </Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
