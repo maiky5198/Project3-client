@@ -1,12 +1,14 @@
+import { toBePartiallyChecked } from '@testing-library/jest-dom/dist/matchers'
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
 
 const linkStyle = {
-    color: 'black',
+    color: 'white',
     textDecoration: 'none',
-	background: 'white'
+	// backgroundColor: 'black',
+	
 }
 const authenticatedOptions = (
 	<>
@@ -51,7 +53,7 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-	<Navbar bg='primary' variant='dark' expand='md'>
+	<Navbar id='custom-nav' bg='dark' variant='dark' expand='md'>
 		<Navbar.Brand>
             <Link to='/' style={linkStyle}>
                 AdventureR
