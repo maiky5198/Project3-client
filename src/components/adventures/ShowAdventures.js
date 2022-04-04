@@ -12,7 +12,7 @@ const ShowAdventures = (props) => {
     // empty dependency array in useEffect to act like component did mount
     useEffect(() => {
         getOneAdventure(id)
-            .then(res => setAdventures(res.data.adventures))
+            .then(res => setAdventures(res.data.adventure))
             .catch(console.error)
     }, [id])
 
