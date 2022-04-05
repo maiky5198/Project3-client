@@ -1,5 +1,3 @@
-
-  
 import React, { useState } from 'react'
 import { Form, Container, Button } from 'react-bootstrap'
 
@@ -14,21 +12,21 @@ const AdventureForm = (props) => {
             <Form onSubmit={handleSubmit}>
                 <Form.Label>Name</Form.Label>
                 <Form.Control 
-                    placeholder="what is the name of your adventure?"
+                    placeholder="What is The Name of Your Adventure?"
                     value={adventure.name}
                     name='name'
                     onChange={handleChange}
                 />
                 <Form.Label>Type</Form.Label>
                 <Form.Control 
-                    placeholder="what type of adventure are you logging?"
+                    placeholder="What Type of Adventure Are You Logging?"
                     value={adventure.type}
                     name='type'
                     onChange={handleChange}
                 />
                 <Form.Label>Time</Form.Label>
                 <Form.Control 
-                    placeholder="how long was your adventure (minutes)?"
+                    placeholder="How Long Was Your Adventure (Minutes)?"
                     value={adventure.time}
                     type="number"
                     name='time'
@@ -36,7 +34,7 @@ const AdventureForm = (props) => {
                 />
                <Form.Label>Distance</Form.Label>
                 <Form.Control 
-                    placeholder="what was the distance of your adventure (miles)?"
+                    placeholder="What Was The Distance of Your Adventure (Miles)?"
                     value={adventure.distance}
                     name='distance'
                     type="number"
@@ -71,14 +69,14 @@ const AdventureForm = (props) => {
                 /> */}
                 <Form.Label>Location</Form.Label>
                 <Form.Control 
-                    placeholder="where was your adventure?"
+                    placeholder="Where Was Your Adventure?"
                     value={adventure.location}
                     name='location'
                     onChange={handleChange}
                 />
                 <Form.Label>Geo location</Form.Label>
                 <Form.Control 
-                    placeholder="latitude and longitude of adventure?"
+                    placeholder="Latitude And Longitude of Adventure?"
                     value={adventure.geolocation}
                     name='geolocation'
                     onChange={handleChange}
