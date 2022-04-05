@@ -6,12 +6,8 @@ const CommentForm = (props) => {
     
     const { adventure, heading, triggerRefresh, user} = props
     const [comment, setComment] = useState("")
-    const [updated, setUpdated] = useState(false)
 
 
-    useEffect(()=>{
-        setComment("")
-    }, [updated])
 
     const handleChange = (e) => {
         // e === event
@@ -40,14 +36,7 @@ const CommentForm = (props) => {
 
         console.log('the comment to submit', comment)
         addComment(user, adventure._id, comment)
-            // if create is successful, we should navigate to the show page
-            // then we send a success message
-            // .then(() =>
-            //     msgAlert({
-            //         heading: 'Toy given to pet!',
-            //         message: 'great! the pet loves it!',
-            //         variant: 'success',
-            //     }))
+            .then(()=> clearField())
             .then(() => triggerRefresh())
             // if there is an error, we'll send an error message
             .catch(console.error)
@@ -114,7 +103,7 @@ const CommentForm = (props) => {
                     name='geolocation'
                     onChange={handleChange}
                 /> */}
-                <Button type='submit' onclick={clearField}>Submit</Button>
+                <Button type='submit' >Submit</Button>
             </Form>
         </Container>
     )
