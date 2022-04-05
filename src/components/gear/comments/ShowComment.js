@@ -6,6 +6,10 @@ const ShowComment = (props) => {
     // most of these are simply to pass to edit modal
     const {comment, user, adventure, triggerRefresh} = props
 
+    const [commentOwner, setCommentOwner] = useState(null)
+
+
+
 
 
     const destroyComment = () => {
@@ -26,15 +30,12 @@ const ShowComment = (props) => {
                         author: {comment.owner}
                     </Card.Footer>
                     {
-                        user && (user.id === comment.owner.id) 
-                        ?
+                        user._id === comment.owner &&
                             <>
                                 <Button onClick={() => destroyComment()}variant="danger">
                                     X
                                 </Button>
                             </>
-                        :
-                        null
                     }
                 </Card.Body>
             </Card>
