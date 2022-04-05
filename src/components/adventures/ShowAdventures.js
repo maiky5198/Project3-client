@@ -5,8 +5,8 @@ import { Spinner, Container, Card, Button } from 'react-bootstrap'
 import EditAdventureModal from './EditAdventureModal'
 import AddGearModal from '../gear/AddGearModal'
 import ShowGear from '../gear/ShowGear'
-import CommentForm from '../gear/comments/CommentForm'
-import ShowComment from '../gear/comments/ShowComment'
+import CommentForm from '../comments/CommentForm'
+import ShowComment from '../comments/ShowComment'
 
 const ShowAdventures = (props) => {
 
