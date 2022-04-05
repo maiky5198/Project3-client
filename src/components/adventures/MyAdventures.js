@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { getMyAdventures } from '../../api/adventures'
-import { Card } from 'react-bootstrap'
+import { Card, Spinner, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 
@@ -26,11 +26,23 @@ const MyAdventures = (props) => {
             
     }, [])
 
+    
     if (!myAdventures) {
-        return <p>loading...</p>
+        return ( 
+                <Container fluid className='' >
+                    <Spinner animation="border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </Spinner>
+                </Container>
+        )
     }
     if (myAdventures.length === 0) {
-        return <p>You have no adventures, go explore!</p>
+        return (
+            <div>
+                <h3> My adventures</h3>   
+                <p>You have no adventures, go explore!</p>
+            </div>
+        )
     }
 
     let adventureCards
@@ -52,7 +64,7 @@ const MyAdventures = (props) => {
 
     return (
         <>
-            <h3>All of my adventures</h3>
+            <h3> My adventures</h3>
             <div style={cardContainerLayout}>
                 {adventureCards}
             </div>
