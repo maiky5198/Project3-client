@@ -74,13 +74,13 @@ const AdventureForm = (props) => {
                     name='location'
                     onChange={handleChange}
                 />
-                <Form.Label>Geo location</Form.Label>
-                <Form.Control 
+                {/* <Form.Label>Geo location</Form.Label> */}
+                {/* <Form.Control 
                     placeholder="Latitude And Longitude of Adventure?"
                     value={adventure.geolocation}
                     name='geolocation'
                     onChange={handleChange}
-                />
+                /> */}
                 <Button type='submit'>Submit</Button>
             </Form>
         </Container>
