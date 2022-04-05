@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Form, Container, Button } from 'react-bootstrap'
-import { addComment } from '../../../api/comments'
+import { addComment } from '../../api/comments'
 
 const CommentForm = (props) => {
     
