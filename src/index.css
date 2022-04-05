@@ -18,12 +18,12 @@ Header {
   background-color:aqua
 }
 
-#home-background {
+/* #home-background {
   background-image: url("https://www.torontoathleticclub.com/Portals/AdelaideClub/EasyDNNnews/491/img-february-22-mountains-cover.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-}
-=======
+} */
+
 .bg-myOrange {
   background-color: orange;
 }
