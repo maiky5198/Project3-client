@@ -14,7 +14,8 @@ const Home = (props) => {
 			<h1 style={{
 				textAlign: 'center',
 				fontFamily: 'fantasy',
-				fontWeight: 'bold'
+				fontWeight: 'bold',
+				padding: '20px 0 5px 0'
 			}}
 			>Welcome to the adventureR!</h1>
 			<h3 style={{
