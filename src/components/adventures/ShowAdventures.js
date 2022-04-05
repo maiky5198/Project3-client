@@ -7,6 +7,7 @@ import AddGearModal from '../gear/AddGearModal'
 import ShowGear from '../gear/ShowGear'
 import CommentForm from '../comments/CommentForm'
 import ShowComment from '../comments/ShowComment'
+import axios from 'axios'
 
 const ShowAdventures = (props) => {
 
@@ -19,16 +20,29 @@ const ShowAdventures = (props) => {
     const { id } = useParams()
     const {user} = props
     console.log('id in showAdevtures', id)
+
+    const getWeather = () => {
+        let location = adventure.location
+        axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${location},us&units=imperial&appid=3b5e3f7e7f321e7d835e1f919228d636`)
+                    .then(responseData => {
+                        return responseData
+                        
+                    })
+                    .then(jsonData => {
+                        console.log('coordinates in jsonData', jsonData.data.coord)
+                    })
+    }
+
     // empty dependency array in useEffect to act like component did mount
     useEffect(() => {
         getOneAdventure(id)
             .then(res => setAdventure(res.data.adventure))
-            .catch(console.error)
+            .catch(console.error)      
     }, [updated])
 
-    const removeTheAdventure = () =>{
+    const removeTheAdventure = () => {
         removeAdventure(user, adventure._id)
-            .then(() => {navigate(`/adventures`)})
+            .then(() => {navigate(`/`)})
             .catch(console.error)
     }
 
@@ -36,6 +50,7 @@ const ShowAdventures = (props) => {
     let comments
 
     if(adventure){
+        getWeather() 
         if (adventure.gear.length > 0) {
             gearCards = adventure.gear.map(gearItem => (
                 // need to pass all props needed for updateGear func in edit modal
