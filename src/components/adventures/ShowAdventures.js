@@ -28,7 +28,7 @@ const ShowAdventures = (props) => {
 
     const removeTheAdventure = () =>{
         removeAdventure(user, adventure._id)
-            .then(() => {navigate(`/`)})
+            .then(() => {navigate(`/adventures`)})
             .catch(console.error)
     }
 
