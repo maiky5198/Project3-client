@@ -5,6 +5,8 @@ import { Spinner, Container, Card, Button } from 'react-bootstrap'
 import EditAdventureModal from './EditAdventureModal'
 import AddGearModal from '../gear/AddGearModal'
 import ShowGear from '../gear/ShowGear'
+import CommentForm from '../gear/comments/CommentForm'
+import ShowComment from '../gear/comments/ShowComment'
 
 const ShowAdventures = (props) => {
 
@@ -36,11 +38,16 @@ const ShowAdventures = (props) => {
     if(adventure){
         if (adventure.gear.length > 0) {
             gearCards = adventure.gear.map(gearItem => (
-                // need to pass all props needed for updateToy func in edit modal
+                // need to pass all props needed for updateGear func in edit modal
                 <ShowGear 
                     key={gearItem._id} gear={gearItem} user={user} adventure={adventure} triggerRefresh={() => setUpdated(prev => !prev)}
                 />
                 // <p key={gearItem._id}>{gearItem.name}</p>
+            ))
+        }
+        if(adventure.comments.length > 0){
+            comments = adventure.comments.map(comment => (
+                <ShowComment key={comment._id} updated={updated} comment={comment} adventure={adventure} user={user}  triggerRefresh={() => setUpdated(prev => !prev)}/>
             ))
         }
     }
@@ -88,11 +95,12 @@ const ShowAdventures = (props) => {
                     {gearCards}
                 </Card>
             </Container>
+            {comments}
+            <CommentForm user={user} adventure={adventure} triggerRefresh={() => setUpdated(prev => !prev)} heading="Comments"/>
             <EditAdventureModal 
             adventure = {adventure}
             show={modalOpen}
             user={user}
-            // msgAlert={msg}
             triggerRefresh={() => setUpdated(prev => !prev)}
             updateAdventure={updateAdventure}
             handleClose={() => setModalOpen(false)}
