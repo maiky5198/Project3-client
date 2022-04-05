@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Card, Button } from 'react-bootstrap'
 import EditGearModal from './EditGearModal'
 import { removeGear } from '../../api/gear'
+import { Container } from 'react-bootstrap'
 
 const ShowGear = (props) => {
     // most of these are simply to pass to edit modal
@@ -29,7 +30,15 @@ const ShowGear = (props) => {
     
     return (
         <>
-            <Card className="m-2">
+            <Container style={{
+               display: "flex",
+               flexDirection: "row wrap",
+               flexWrap: "wrap"
+            }}>
+            <Card className="m-2" style={{
+                width: "15rem",
+                alignment: "center",
+            }}>
                 <Card.Header>{gear.name}</Card.Header>
                 <Card.Body>
                     <small>Quantity: {gear.quantity}</small><br/>
@@ -52,6 +61,7 @@ const ShowGear = (props) => {
                     }
                 </Card.Body>
             </Card>
+            </Container>
             <EditGearModal 
                 user={user}
                 adventure={adventure}

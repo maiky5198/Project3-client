@@ -56,7 +56,7 @@ const alwaysOptions = (
 const Header = ({ user }) => (
 	<Navbar className='custom-nav' bg='myOrange' variant='light' expand='md'>
 		<Navbar.Brand>
-            <Link to='/' style={linkStyle}>
+            <Link to='/adventures' style={linkStyle}>
                 AdventureR
             </Link>
         </Navbar.Brand>
