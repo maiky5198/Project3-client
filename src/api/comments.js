@@ -10,6 +10,9 @@ export const addComment = (user, adventureId, newComment) => {
     return axios({
         url: `${apiUrl}/comments/${adventureId}`,
         method: 'POST',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        },
         data: { comment: newComment }
     })
 }
