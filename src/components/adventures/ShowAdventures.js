@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useLayoutEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import { getOneAdventure, removeAdventure, updateAdventure } from '../../api/adventures'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Spinner, Container, Card, Button } from 'react-bootstrap'
@@ -8,6 +8,8 @@ import ShowGear from '../gear/ShowGear'
 import CommentForm from '../comments/CommentForm'
 import ShowComment from '../comments/ShowComment'
 import axios from 'axios'
+import mapboxgl from 'mapbox-gl'
+mapboxgl.accessToken = "pk.eyJ1IjoicGF0cmlja2dhIiwiYSI6ImNsMW1samsxaTAyZnEzZG1qaTJ6MGpucXMifQ.D1v5-fBFpai46mRZvpibwA"
 
 const ShowAdventures = (props) => {
 
@@ -17,7 +19,15 @@ const ShowAdventures = (props) => {
     const [updated, setUpdated] = useState(false)
     const navigate = useNavigate()
     const [coordinates, setCoordinates] = useState({})
-
+    const mapContainer = useRef(null);
+    const map = useRef(null)
+    const [viewport, setViewport] = useState({
+        latitude: 39.4895,
+        longitude: -104.8447,
+        width: '25vw',
+        height: '25vh',
+        zoom: 9
+    })
     console.log('props in showAdventures', props)
     const { id } = useParams()
     const {user} = props
@@ -37,7 +47,17 @@ const ShowAdventures = (props) => {
                     })
                     .catch(console.error)
         console.log('get weather function')
+        if (map.current) return // initialize map only once
+        map.current = new mapboxgl.Map({
+            container: mapContainer.current,
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [-104.8447, 39.4895],
+            zoom: 10
+        }) 
     }
+
+
+
 
     // empty dependency array in useEffect to act like component did mount
     useEffect(() => {
@@ -46,7 +66,7 @@ const ShowAdventures = (props) => {
                 setAdventure(res.data.adventure)
             })
             .catch(console.error)  
-            // getWeather()    
+            // getWeather()   
     }, [updated])
 
     const removeTheAdventure = () => {
@@ -90,10 +110,13 @@ const ShowAdventures = (props) => {
         return (
             <>
             <Container className="fluid">
-                <Card>
-                    <Card.Header>{adventure.name}</Card.Header>
-                    <Card.Body>
-                        <Card.Text>
+                <div>
+                    <div ref={mapContainer} className="map-container" />
+                </div>
+                    <Card>
+                        <Card.Header>{adventure.name}</Card.Header>
+                        <Card.Body>
+                            <Card.Text>
                             <small>Type: {adventure.type}</small><br/>
                             <small>Time: {adventure.time} minutes</small><br/>
                             <small>Distance: {adventure.distance} miles</small><br/>
