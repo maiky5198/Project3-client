@@ -54,12 +54,14 @@ Header {
 }
 
 #showContainer {
+  flex-wrap: wrap;
   width: 60%;
 }
 
 #displayBox {
   display:flex;
   flex-wrap: wrap;
+  align-content: flex-start;
 }
 
 .marker {
@@ -70,3 +72,4 @@ Header {
   border-radius: 50%;
   cursor: pointer;
 }
+
