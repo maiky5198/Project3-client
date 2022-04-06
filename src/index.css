@@ -1,21 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap");
 body {
   margin: 0;
-  font-family: 'Fjalla One', sans-serif !important;
+  font-family: "Fjalla One", sans-serif !important;
 }
 
 code {
-  font-family: 'Fjalla One', sans-serif;
+  font-family: "Fjalla One", sans-serif;
   background-color: aqua;
 }
 
 Header {
-  background-color:aqua
+  background-color: aqua;
 }
 
-.bg-myOrange {
-  background-color: orange;
+.bg-myBlue {
+  background-color: #03588c;
+  border-bottom: solid black 2px;
 }
 .map-container {
   height: 400px;
-  }
+}
+
+#signup {
+  background-color: #f2db94;
+  border: none;
+  border-radius: 5px;
+  color: #0d0d0d;
+}
+#signin {
+  background-color: #f2db94;
+  border: none;
+  border-radius: 5px;
+  color: #0d0d0d;
+}
