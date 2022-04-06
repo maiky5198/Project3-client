@@ -13,14 +13,12 @@ const Home = (props) => {
 			}}>
 			<h1 style={{
 				textAlign: 'center',
-				fontFamily: 'fantasy',
 				fontWeight: 'bold',
 				padding: '20px 0 5px 0'
 			}}
 			>Welcome to the adventureR!</h1>
 			<h3 style={{
-				textAlign: 'center',
-				fontFamily: 'fantasy'
+				textAlign: 'center'
 			}}
 			>Sign Up or Sign In to log your next adventure with us!</h3>
 		</div>
