@@ -47,7 +47,9 @@ const ShowAdventures = (props) => {
                         console.log('coordinates in jsonData', jsonData.data.coord)
                         let jsonCoordinates = jsonData.data.coord
                         setCoordinates(jsonCoordinates)
-                        console.log('coordinates after setCoordinates', coordinates)
+                    })
+                    .then(()=>{
+                        setTimeout(()=>{console.log('coordinates after setCoordinates', coordinates)}, 1000)
                     })
                     .catch(console.error)
         console.log('get weather function')
