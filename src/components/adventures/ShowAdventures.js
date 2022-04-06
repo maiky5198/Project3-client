@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useLayoutEffect} from 'react'
 import { getOneAdventure, removeAdventure, updateAdventure } from '../../api/adventures'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Spinner, Container, Card, Button } from 'react-bootstrap'
@@ -16,6 +16,8 @@ const ShowAdventures = (props) => {
     const [gearModalOpen, setGearModalOpen] = useState(false)
     const [updated, setUpdated] = useState(false)
     const navigate = useNavigate()
+    const [coordinates, setCoordinates] = useState({})
+
     console.log('props in showAdventures', props)
     const { id } = useParams()
     const {user} = props
@@ -23,21 +25,28 @@ const ShowAdventures = (props) => {
 
     const getWeather = () => {
         let location = adventure.location
-        axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${location},us&units=imperial&appid=3b5e3f7e7f321e7d835e1f919228d636`)
+        axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${location},us&units=imperial&appid=13f0068c439d4829573cf942bc590874`)
                     .then(responseData => {
                         return responseData
-                        
                     })
                     .then(jsonData => {
                         console.log('coordinates in jsonData', jsonData.data.coord)
+                        let jsonCoordinates = jsonData.data.coord
+                        setCoordinates(jsonCoordinates)
+                        console.log('coordinates after setCoordinates', coordinates)
                     })
+                    .catch(console.error)
+        console.log('get weather function')
     }
 
     // empty dependency array in useEffect to act like component did mount
     useEffect(() => {
         getOneAdventure(id)
-            .then(res => setAdventure(res.data.adventure))
-            .catch(console.error)      
+            .then(res => {
+                setAdventure(res.data.adventure)
+            })
+            .catch(console.error)  
+            // getWeather()    
     }, [updated])
 
     const removeTheAdventure = () => {
@@ -50,7 +59,7 @@ const ShowAdventures = (props) => {
     let comments
 
     if(adventure){
-        getWeather() 
+        // getWeather()
         if (adventure.gear.length > 0) {
             gearCards = adventure.gear.map(gearItem => (
                 // need to pass all props needed for updateGear func in edit modal
@@ -93,7 +102,10 @@ const ShowAdventures = (props) => {
     
                         </Card.Text>
                     </Card.Body>
-                    {adventure.owner == user._id &&       
+                    {adventure.owner == user._id && 
+
+                           
+
                     <Card.Footer>
                             <Button onClick={() => setGearModalOpen(true)} className="m-2" variant="info">
                                 Add gear!
@@ -107,6 +119,7 @@ const ShowAdventures = (props) => {
     
                     </Card.Footer>                        
                     }
+                    <Button onClick={() => getWeather()}>Get Weather</Button>
                     {gearCards}
                 </Card>
             </Container>
