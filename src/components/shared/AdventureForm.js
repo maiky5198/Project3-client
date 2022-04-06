@@ -69,7 +69,7 @@ const AdventureForm = (props) => {
                 /> */}
                 <Form.Label>Location</Form.Label>
                 <Form.Control 
-                    placeholder="Where Was Your Adventure?"
+                    placeholder="Zip Code of Your Adventure?"
                     value={adventure.location}
                     name='location'
                     onChange={handleChange}

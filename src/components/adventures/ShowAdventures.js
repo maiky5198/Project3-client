@@ -53,8 +53,6 @@ const ShowAdventures = (props) => {
     }
 
 
-
-
     // empty dependency array in useEffect to act like component did mount
     useEffect(() => {
         console.log('key', process.env.REACT_APP_WEATHERAPIKEY)
@@ -153,9 +151,6 @@ const ShowAdventures = (props) => {
                         }   
                     </Card.Body>
                     {adventure.owner == user._id && 
-
-                           
-
                     <Card.Footer>
                             <Button onClick={() => setGearModalOpen(true)} className="m-2" variant="info">
                                 Add gear!
