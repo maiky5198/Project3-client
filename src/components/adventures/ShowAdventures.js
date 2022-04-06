@@ -141,8 +141,10 @@ const ShowAdventures = (props) => {
                             <small>Current Temperature: {temp}°F</small><br/>
                             </>
                             }
-                        </Card.Text>            
-                        {gearCards}
+                        </Card.Text>
+                        <div className='gearBox'>
+                            {gearCards}
+                        </div>            
                     </Card.Body>
                     {adventure.owner == user._id && 
 

@@ -30,11 +30,6 @@ const ShowGear = (props) => {
     
     return (
         <>
-            <Container style={{
-               display: "flex",
-               flexDirection: "row wrap",
-               flexWrap: "wrap"
-            }}>
             <Card className="m-2" style={{
                 width: "15rem",
                 alignment: "center",
@@ -46,8 +41,7 @@ const ShowGear = (props) => {
                     <Card.Footer >
                     </Card.Footer>
                     {
-                        user && (user.id === adventure.owner.id) 
-                        ?
+                        user._id === adventure.owner && 
                             <>
                                 <Button variant="warning" onClick={() => setShowEditModal(true)}>
                                     Edit Gear
@@ -56,12 +50,9 @@ const ShowGear = (props) => {
                                     Delete Gear
                                 </Button>
                             </>
-                        :
-                        null
                     }
                 </Card.Body>
             </Card>
-            </Container>
             <EditGearModal 
                 user={user}
                 adventure={adventure}

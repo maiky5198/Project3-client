@@ -41,3 +41,8 @@ Header {
   border-radius: 5px;
   color: #0d0d0d;
 }
+
+.gearBox {
+  display: flex;
+  flex-wrap: wrap;
+}
