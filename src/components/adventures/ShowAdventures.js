@@ -117,10 +117,6 @@ const ShowAdventures = (props) => {
         return (
             <>
             <Container className="fluid" id="showContainer">
-                <div>
-                    <div ref={mapContainer} className="map-container" />
-                </div>
-                    <div id="displayBox">
                     <Card>
                         <Card.Header>{adventure.name}</Card.Header>
                         <Card.Body>
@@ -150,6 +146,9 @@ const ShowAdventures = (props) => {
                             <p>No gear required!</p>       
                         }   
                     </Card.Body>
+                    <div>
+                        <div ref={mapContainer} className="map-container" />
+                    </div>
                     {adventure.owner == user._id && 
                     <Card.Footer>
                             <Button onClick={() => setGearModalOpen(true)} className="m-2" variant="info">
@@ -165,9 +164,7 @@ const ShowAdventures = (props) => {
                     </Card.Footer>                        
                     }
                     <Button onClick={() => getWeather()}>Get Map</Button>
- 
                 </Card>
-                </div>
             </Container>
             <div className='commentBox'> 
                 {comments}
