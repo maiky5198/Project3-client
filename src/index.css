@@ -60,6 +60,7 @@ Header {
 #displayBox {
   display:flex;
   flex-wrap: wrap;
+}
 
 .marker {
   background-image: '/mapbox-icon\ \(1\).png';
