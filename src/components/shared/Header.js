@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
 
 const linkStyle = {
-    color: 'white',
+    color: '#F2DB94',
     textDecoration: 'none',
 	// backgroundColor: 'black',
 	
@@ -54,9 +54,9 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-	<Navbar className='custom-nav' bg='myOrange' variant='light' expand='md'>
+	<Navbar className='custom-nav' bg='myBlue' variant='light' expand='md'>
 		<Navbar.Brand>
-            <Link to='/adventures' style={linkStyle}>
+            <Link to='/adventures' className= 'm-2' style={linkStyle}>
                 AdventureR
             </Link>
         </Navbar.Brand>
