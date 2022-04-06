@@ -46,3 +46,12 @@ Header {
   display: flex;
   flex-wrap: wrap;
 }
+
+#showContainer {
+  width: 60%;
+}
+
+#displayBox {
+  display:flex;
+  flex-wrap: wrap;
+}

@@ -118,10 +118,11 @@ const ShowAdventures = (props) => {
     if(adventure.name){
         return (
             <>
-            <Container className="fluid">
+            <Container className="fluid" id="showContainer">
                 <div>
                     <div ref={mapContainer} className="map-container" />
                 </div>
+                    <div id="displayBox">
                     <Card>
                         <Card.Header>{adventure.name}</Card.Header>
                         <Card.Body>
@@ -171,9 +172,12 @@ const ShowAdventures = (props) => {
                     <Button onClick={() => getWeather()}>Get Map</Button>
  
                 </Card>
+                </div>
             </Container>
-            {comments}
-            <CommentForm user={user} adventure={adventure} triggerRefresh={() => setUpdated(prev => !prev)} heading="Comments"/>
+            <div className='commentBox'> 
+                {comments}
+                <CommentForm user={user} adventure={adventure} triggerRefresh={() => setUpdated(prev => !prev)} heading="Comments"/>
+            </div>
             <EditAdventureModal 
             adventure = {adventure}
             show={modalOpen}
