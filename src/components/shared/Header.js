@@ -12,9 +12,9 @@ const linkStyle = {
 }
 const authenticatedOptions = (
 	<>
-		<Link className="m-2" to='/adventures' style={linkStyle}>
-				All Adventures
-			</Link>
+		<Nav.Item className="m-2">
+			<Link  to='/adventures' style={linkStyle}>All Adventures</Link>
+		</Nav.Item>
 		<Nav.Item className="m-2">
 		    <Link to='addAdventure' style={linkStyle}>Add Adventure</Link>
         </Nav.Item>
@@ -58,13 +58,14 @@ const Header = ({ user }) => (
 		<Navbar.Brand>
             <Link to='/adventures' className= 'm-2' style={linkStyle}>
                 AdventureR
+				
             </Link>
         </Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
 		<Navbar.Collapse id='basic-navbar-nav'>
 			<Nav className='ml-auto'>
 				{user && (
-					<span className='m-2'style={{color: '#f2db94'}}>Welcome, {user.email}</span>
+					<span className='m-2'style={{color: '#0d0d0d'}}>Welcome, {user.email}</span>
 				)}
 				{alwaysOptions}
 				{user ? authenticatedOptions : unauthenticatedOptions}
