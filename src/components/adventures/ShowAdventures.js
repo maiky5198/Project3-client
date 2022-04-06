@@ -51,6 +51,25 @@ const ShowAdventures = (props) => {
                     })
                     .catch(console.error)
         console.log('get weather function')
+     
+    }
+
+
+
+
+    // empty dependency array in useEffect to act like component did mount
+    useEffect(() => {
+        //console.log('key', process.env.REACT_APP_WEATHERAPIKEY)
+        getOneAdventure(id)
+            .then(res => {
+                setAdventure(res.data.adventure)
+            })
+            .catch(console.error)  
+            // getWeather()   
+    }, [updated])
+
+//as soon as coordinates is updated, run this...
+    useEffect(() => {
         if(coordinates) {
             if (map.current) return // initialize map only once
             map.current = new mapboxgl.Map({
@@ -60,21 +79,7 @@ const ShowAdventures = (props) => {
                 zoom: 10
             })
         } 
-    }
-
-
-
-
-    // empty dependency array in useEffect to act like component did mount
-    useEffect(() => {
-        console.log('key', process.env.REACT_APP_WEATHERAPIKEY)
-        getOneAdventure(id)
-            .then(res => {
-                setAdventure(res.data.adventure)
-            })
-            .catch(console.error)  
-            // getWeather()   
-    }, [updated])
+    }, [coordinates])
 
     const removeTheAdventure = () => {
         removeAdventure(user, adventure._id)
