@@ -10,9 +10,10 @@ import ShowComment from '../comments/ShowComment'
 import axios from 'axios'
 import mapboxgl from 'mapbox-gl'
 require('dotenv').config()
-const key = process.env.REACT_APP_MAPBOX_TOKEN
+const mapKey = process.env.REACT_APP_MAPBOX_TOKEN
+mapboxgl.accessToken = `${mapKey}`
+const weatherKey = process.env.REACT_APP_WEATHERAPIKEY
 
-mapboxgl.accessToken = `${key}`
 
 const ShowAdventures = (props) => {
 
@@ -38,7 +39,7 @@ const ShowAdventures = (props) => {
 
     const getWeather = () => {
         let location = adventure.location
-        axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${location},us&units=imperial&appid=13f0068c439d4829573cf942bc590874`)
+        axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${location},us&units=imperial&appid=${weatherKey}`)
                     .then(responseData => {
                         return responseData
                     })
@@ -66,7 +67,7 @@ const ShowAdventures = (props) => {
 
     // empty dependency array in useEffect to act like component did mount
     useEffect(() => {
-        console.log('key', key)
+        console.log('key', process.env.REACT_APP_WEATHERAPIKEY)
         getOneAdventure(id)
             .then(res => {
                 setAdventure(res.data.adventure)
