@@ -34,7 +34,8 @@ const Home = (props) => {
 			<h3 style={{
 				textAlign: 'center',
 				color: '#0D0D0D',
-			
+				textAlign: 'center'
+
 			}}
 			>Sign Up or Sign In to log your next adventure with us!</h3>
 			<Container style={{
