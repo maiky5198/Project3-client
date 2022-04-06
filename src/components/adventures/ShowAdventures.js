@@ -142,9 +142,14 @@ const ShowAdventures = (props) => {
                             </>
                             }
                         </Card.Text>
-                        <div className='gearBox'>
-                            {gearCards}
-                        </div>            
+                        <h4>Gear:</h4>
+                        {adventure.gear.length > 0 ? 
+                            <div className='gearBox'>
+                                {gearCards}
+                            </div>
+                            :
+                            <p>No gear required!</p>       
+                        }   
                     </Card.Body>
                     {adventure.owner == user._id && 
 
