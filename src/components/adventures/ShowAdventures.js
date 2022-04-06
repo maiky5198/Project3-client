@@ -23,15 +23,11 @@ const ShowAdventures = (props) => {
     const [updated, setUpdated] = useState(false)
     const navigate = useNavigate()
     const [coordinates, setCoordinates] = useState(null)
+    const [weather, setWeather] = useState(null)
+    const [temp, setTemp] = useState(null)
     const mapContainer = useRef(null);
     const map = useRef(null)
-    const [viewport, setViewport] = useState({
-        latitude: 39.4895,
-        longitude: -104.8447,
-        width: '25vw',
-        height: '25vh',
-        zoom: 9
-    })
+
     console.log('props in showAdventures', props)
     const { id } = useParams()
     const {user} = props
@@ -46,12 +42,14 @@ const ShowAdventures = (props) => {
                     .then(jsonData => {
                         console.log('coordinates in jsonData', jsonData.data.coord)
                         let jsonCoordinates = jsonData.data.coord
+                        let jsonWeather = jsonData.data.weather[0]
+                        let jsonTemp = jsonData.data.main.temp
                         setCoordinates(jsonCoordinates)
-                        console.log('coordinates after setCoordinates', coordinates)
+                        setWeather(jsonWeather)
+                        setTemp(jsonTemp)
                     })
                     .catch(console.error)
         console.log('get weather function')
-     
     }
 
 
@@ -59,7 +57,7 @@ const ShowAdventures = (props) => {
 
     // empty dependency array in useEffect to act like component did mount
     useEffect(() => {
-        //console.log('key', process.env.REACT_APP_WEATHERAPIKEY)
+        console.log('key', process.env.REACT_APP_WEATHERAPIKEY)
         getOneAdventure(id)
             .then(res => {
                 setAdventure(res.data.adventure)
@@ -68,22 +66,21 @@ const ShowAdventures = (props) => {
             // getWeather()   
     }, [updated])
 
-//as soon as coordinates is updated, run this...
-    useEffect(() => {
+    useEffect(()=> {
         if(coordinates) {
             if (map.current) return // initialize map only once
             map.current = new mapboxgl.Map({
                 container: mapContainer.current,
                 style: 'mapbox://styles/mapbox/streets-v11',
                 center: [coordinates.lon, coordinates.lat],
-                zoom: 10
+                zoom: 15
             })
         } 
     }, [coordinates])
 
     const removeTheAdventure = () => {
         removeAdventure(user, adventure._id)
-            .then(() => {navigate(`/`)})
+            .then(() => {navigate(`/adventures`)})
             .catch(console.error)
     }
 
@@ -134,8 +131,18 @@ const ShowAdventures = (props) => {
                             <small>Distance: {adventure.distance} miles</small><br/>
                             <small>Difficulty Level: {adventure.difficultyLevel}</small><br/>
                             <small>Location: {adventure.location}</small><br/>
-    
-                        </Card.Text>
+                            {weather &&
+                            <>
+                            <small>Current Weather: {weather.main}, {weather.description}</small><br/>
+                            </>
+                            }
+                            {temp &&
+                            <> 
+                            <small>Current Temperature: {temp}</small><br/>
+                            </>
+                            }
+                        </Card.Text>            
+                        {gearCards}
                     </Card.Body>
                     {adventure.owner == user._id && 
 
@@ -155,7 +162,7 @@ const ShowAdventures = (props) => {
                     </Card.Footer>                        
                     }
                     <Button onClick={() => getWeather()}>Get Map</Button>
-                    {gearCards}
+ 
                 </Card>
             </Container>
             {comments}
