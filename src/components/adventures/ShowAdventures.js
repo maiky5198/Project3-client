@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import { getOneAdventure, removeAdventure, updateAdventure } from '../../api/adventures'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Spinner, Container, Card, Button } from 'react-bootstrap'
@@ -8,6 +8,11 @@ import ShowGear from '../gear/ShowGear'
 import CommentForm from '../comments/CommentForm'
 import ShowComment from '../comments/ShowComment'
 import axios from 'axios'
+import mapboxgl from 'mapbox-gl'
+require('dotenv').config()
+const key = process.env.REACT_APP_MAPBOX_TOKEN
+
+mapboxgl.accessToken = `${key}`
 
 const ShowAdventures = (props) => {
 
@@ -16,6 +21,16 @@ const ShowAdventures = (props) => {
     const [gearModalOpen, setGearModalOpen] = useState(false)
     const [updated, setUpdated] = useState(false)
     const navigate = useNavigate()
+    const [coordinates, setCoordinates] = useState(null)
+    const mapContainer = useRef(null);
+    const map = useRef(null)
+    const [viewport, setViewport] = useState({
+        latitude: 39.4895,
+        longitude: -104.8447,
+        width: '25vw',
+        height: '25vh',
+        zoom: 9
+    })
     console.log('props in showAdventures', props)
     const { id } = useParams()
     const {user} = props
@@ -23,21 +38,41 @@ const ShowAdventures = (props) => {
 
     const getWeather = () => {
         let location = adventure.location
-        axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${location},us&units=imperial&appid=3b5e3f7e7f321e7d835e1f919228d636`)
+        axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${location},us&units=imperial&appid=13f0068c439d4829573cf942bc590874`)
                     .then(responseData => {
                         return responseData
-                        
                     })
                     .then(jsonData => {
                         console.log('coordinates in jsonData', jsonData.data.coord)
+                        let jsonCoordinates = jsonData.data.coord
+                        setCoordinates(jsonCoordinates)
+                        console.log('coordinates after setCoordinates', coordinates)
                     })
+                    .catch(console.error)
+        console.log('get weather function')
+        if(coordinates) {
+            if (map.current) return // initialize map only once
+            map.current = new mapboxgl.Map({
+                container: mapContainer.current,
+                style: 'mapbox://styles/mapbox/streets-v11',
+                center: [coordinates.lon, coordinates.lat],
+                zoom: 10
+            })
+        } 
     }
+
+
+
 
     // empty dependency array in useEffect to act like component did mount
     useEffect(() => {
+        console.log('key', key)
         getOneAdventure(id)
-            .then(res => setAdventure(res.data.adventure))
-            .catch(console.error)      
+            .then(res => {
+                setAdventure(res.data.adventure)
+            })
+            .catch(console.error)  
+            // getWeather()   
     }, [updated])
 
     const removeTheAdventure = () => {
@@ -50,7 +85,7 @@ const ShowAdventures = (props) => {
     let comments
 
     if(adventure){
-        getWeather() 
+        // getWeather()
         if (adventure.gear.length > 0) {
             gearCards = adventure.gear.map(gearItem => (
                 // need to pass all props needed for updateGear func in edit modal
@@ -81,10 +116,13 @@ const ShowAdventures = (props) => {
         return (
             <>
             <Container className="fluid">
-                <Card>
-                    <Card.Header>{adventure.name}</Card.Header>
-                    <Card.Body>
-                        <Card.Text>
+                <div>
+                    <div ref={mapContainer} className="map-container" />
+                </div>
+                    <Card>
+                        <Card.Header>{adventure.name}</Card.Header>
+                        <Card.Body>
+                            <Card.Text>
                             <small>Type: {adventure.type}</small><br/>
                             <small>Time: {adventure.time} minutes</small><br/>
                             <small>Distance: {adventure.distance} miles</small><br/>
@@ -93,7 +131,10 @@ const ShowAdventures = (props) => {
     
                         </Card.Text>
                     </Card.Body>
-                    {adventure.owner == user._id &&       
+                    {adventure.owner == user._id && 
+
+                           
+
                     <Card.Footer>
                             <Button onClick={() => setGearModalOpen(true)} className="m-2" variant="info">
                                 Add gear!
@@ -107,6 +148,7 @@ const ShowAdventures = (props) => {
     
                     </Card.Footer>                        
                     }
+                    <Button onClick={() => getWeather()}>Get Map</Button>
                     {gearCards}
                 </Card>
             </Container>
