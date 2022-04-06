@@ -9,7 +9,10 @@ import CommentForm from '../comments/CommentForm'
 import ShowComment from '../comments/ShowComment'
 import axios from 'axios'
 import mapboxgl from 'mapbox-gl'
-mapboxgl.accessToken = "pk.eyJ1IjoicGF0cmlja2dhIiwiYSI6ImNsMW1samsxaTAyZnEzZG1qaTJ6MGpucXMifQ.D1v5-fBFpai46mRZvpibwA"
+require('dotenv').config()
+const key = process.env.REACT_APP_MAPBOX_TOKEN
+
+mapboxgl.accessToken = `${key}`
 
 const ShowAdventures = (props) => {
 
@@ -18,7 +21,7 @@ const ShowAdventures = (props) => {
     const [gearModalOpen, setGearModalOpen] = useState(false)
     const [updated, setUpdated] = useState(false)
     const navigate = useNavigate()
-    const [coordinates, setCoordinates] = useState({})
+    const [coordinates, setCoordinates] = useState(null)
     const mapContainer = useRef(null);
     const map = useRef(null)
     const [viewport, setViewport] = useState({
@@ -47,13 +50,15 @@ const ShowAdventures = (props) => {
                     })
                     .catch(console.error)
         console.log('get weather function')
-        if (map.current) return // initialize map only once
-        map.current = new mapboxgl.Map({
-            container: mapContainer.current,
-            style: 'mapbox://styles/mapbox/streets-v11',
-            center: [-104.8447, 39.4895],
-            zoom: 10
-        }) 
+        if(coordinates) {
+            if (map.current) return // initialize map only once
+            map.current = new mapboxgl.Map({
+                container: mapContainer.current,
+                style: 'mapbox://styles/mapbox/streets-v11',
+                center: [coordinates.lon, coordinates.lat],
+                zoom: 10
+            })
+        } 
     }
 
 
@@ -61,6 +66,7 @@ const ShowAdventures = (props) => {
 
     // empty dependency array in useEffect to act like component did mount
     useEffect(() => {
+        console.log('key', key)
         getOneAdventure(id)
             .then(res => {
                 setAdventure(res.data.adventure)
@@ -142,7 +148,7 @@ const ShowAdventures = (props) => {
     
                     </Card.Footer>                        
                     }
-                    <Button onClick={() => getWeather()}>Get Weather</Button>
+                    <Button onClick={() => getWeather()}>Get Map</Button>
                     {gearCards}
                 </Card>
             </Container>
