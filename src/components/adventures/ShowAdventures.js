@@ -138,7 +138,7 @@ const ShowAdventures = (props) => {
                             }
                             {temp &&
                             <> 
-                            <small>Current Temperature: {temp}</small><br/>
+                            <small>Current Temperature: {temp}°F</small><br/>
                             </>
                             }
                         </Card.Text>            
