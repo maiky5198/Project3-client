@@ -116,10 +116,11 @@ const ShowAdventures = (props) => {
     if(adventure.name){
         return (
             <>
-            <Container className="fluid">
+            <Container className="fluid" id="showContainer">
                 <div>
                     <div ref={mapContainer} className="map-container" />
                 </div>
+                    <div id="displayBox">
                     <Card>
                         <Card.Header>{adventure.name}</Card.Header>
                         <Card.Body>
@@ -139,8 +140,15 @@ const ShowAdventures = (props) => {
                             <small>Current Temperature: {temp}°F</small><br/>
                             </>
                             }
-                        </Card.Text>            
-                        {gearCards}
+                        </Card.Text>
+                        <h4>Gear:</h4>
+                        {adventure.gear.length > 0 ? 
+                            <div className='gearBox'>
+                                {gearCards}
+                            </div>
+                            :
+                            <p>No gear required!</p>       
+                        }   
                     </Card.Body>
                     {adventure.owner == user._id && 
                     <Card.Footer>
@@ -159,9 +167,12 @@ const ShowAdventures = (props) => {
                     <Button onClick={() => getWeather()}>Get Map</Button>
  
                 </Card>
+                </div>
             </Container>
-            {comments}
-            <CommentForm user={user} adventure={adventure} triggerRefresh={() => setUpdated(prev => !prev)} heading="Comments"/>
+            <div className='commentBox'> 
+                {comments}
+                <CommentForm user={user} adventure={adventure} triggerRefresh={() => setUpdated(prev => !prev)} heading="Comments"/>
+            </div>
             <EditAdventureModal 
             adventure = {adventure}
             show={modalOpen}

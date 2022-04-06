@@ -47,6 +47,20 @@ Header {
   border-radius: 5px;
   color: #0d0d0d;
 }
+
+.gearBox {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#showContainer {
+  width: 60%;
+}
+
+#displayBox {
+  display:flex;
+  flex-wrap: wrap;
+
 .marker {
   background-image: '/mapbox-icon\ \(1\).png';
   background-size: cover;
