@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react'
 import { getOneAdventure, removeAdventure, updateAdventure } from '../../api/adventures'
 import { useParams, useNavigate } from 'react-router-dom'
-import { Spinner, Container, Card, Button } from 'react-bootstrap'
+import { Spinner, Container, Card, Button, Row, Col } from 'react-bootstrap'
 import EditAdventureModal from './EditAdventureModal'
 import AddGearModal from '../gear/AddGearModal'
 import ShowGear from '../gear/ShowGear'
@@ -117,26 +117,52 @@ const ShowAdventures = (props) => {
         return (
             <>
             <Container className="fluid" id="showContainer">
-                    <Card>
-                        <Card.Header><h2>{adventure.name}</h2></Card.Header>
+                    <Card className='shadow p-3 mb-5 bg-body rounded mt-3'>
+                        <Card.Header><h2 style={{
+                            textAlign: 'center'
+                        }}>{adventure.name}</h2></Card.Header>
                         <Card.Body>
                             <Card.Text>
-                            <small>Type: {adventure.type}</small><br/>
-                            <small>Time: {adventure.time} minutes</small><br/>
-                            <small>Distance: {adventure.distance} miles</small><br/>
-                            <small>Difficulty Level: {adventure.difficultyLevel}</small><br/>
-                            <small>Location: {adventure.location}</small><br/>
-                            <small>Description: {adventure.description}</small><br/>
-                            {weather &&
-                            <>
-                            <small>Current Weather: {weather.main}, {weather.description}</small><br/>
-                            </>
-                            }
-                            {temp &&
-                            <> 
-                            <small>Current Temperature: {temp}°F</small><br/>
-                            </>
-                            }
+                            <Row>
+                                <Col>
+                                    <small>Type: {adventure.type}</small><br/>
+                                </Col>
+                                <Col>
+                                    <small>Time: {adventure.time} minutes</small><br/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <small>Distance: {adventure.distance} miles</small><br/>
+                                </Col>
+                                <Col>
+                                    <small>Difficulty Level: {adventure.difficultyLevel}</small><br/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <small>Location: {adventure.location}</small><br/>
+                                </Col>
+                                <Col>
+                                    <small>Description: {adventure.description}</small><br/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    {weather &&
+                                    <>
+                                        <small>Current Weather: {weather.main}, {weather.description}</small><br/>
+                                    </>
+                                    }
+                                </Col>
+                                <Col>
+                                    {temp &&
+                                    <> 
+                                        <small>Current Temperature: {temp}°F</small><br/>
+                                    </>
+                                    }
+                                </Col>
+                            </Row>
                         </Card.Text>
                         <h4>Gear:</h4>
                         {adventure.gear.length > 0 ? 

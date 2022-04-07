@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import {indexAdventuresSuccess, indexAdventuresFailure} from '../shared/AutoDismissAlert/messages'
 import fishing from '../../images/fishing.png'
 import hiking from '../../images/hiking.png'
-import jogging from '../../images/jogging2.png'
+import jogging from '../../images/jogging.png'
 import biking from '../../images/biking.png'
 // I'm going to declare a style object
 // this will be used to corral my cards
