@@ -9,6 +9,7 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 ReactDOM.render(
   <BrowserRouter>
     <App />
+    <footer></footer>
   </BrowserRouter>,
   document.getElementById('root')
 );
