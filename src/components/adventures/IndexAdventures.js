@@ -4,9 +4,9 @@ import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import {indexAdventuresSuccess, indexAdventuresFailure} from '../shared/AutoDismissAlert/messages'
 import fishing from '../../images/fishing.png'
-import hiking from '../../images/man-climbing-on-mountain.png'
+import hiking from '../../images/hiking.png'
 import jogging from '../../images/jogging.png'
-import biking from '../../images/mountain-biking.png'
+import biking from '../../images/biking.png'
 // I'm going to declare a style object
 // this will be used to corral my cards
 // we can use basic CSS, but we have to use JS syntax
@@ -68,7 +68,7 @@ const IndexAdventures = (props) => {
                 } 
                
             return (
-                <Card key={adventure._id} style={{width: '30%' }} className="m-2">
+                <Card key={adventure._id} style={{width: '30%' }} className="m-2 shadow p-3 mb-5 bg-body rounded">
                     <img src= {activity} className= 'card-img-top'></img>
                     <Card.Header>{adventure.name} </Card.Header>
                     <Card.Body>
