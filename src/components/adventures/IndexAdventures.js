@@ -86,7 +86,8 @@ const IndexAdventures = (props) => {
 
     return (
         <>
-            <h1>All of the adventures</h1>
+        <br></br>
+            <div className= 'title'><h1>All of the adventures</h1></div>
             <div style={cardContainerLayout}>
                 {adventureCards}
             </div>
