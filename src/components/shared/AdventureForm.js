@@ -47,7 +47,7 @@ const AdventureForm = (props) => {
                                 <option value="Road Bike">Road Bike</option>
                                 <option value="Mountain Bike">Mountain Bike</option>
                                 <option value="Hike">Hike</option>
-                                <option value="Swim">Fishing</option>
+                                <option value="Fishing">Fishing</option>
                     </select>
                 </div>
                 </Col>
