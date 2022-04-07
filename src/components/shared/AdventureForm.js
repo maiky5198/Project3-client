@@ -1,9 +1,6 @@
-import React, { useState } from 'react'
-import { Form, Container, Button, FormSelect, select, Option, Row, Col } from 'react-bootstrap'
-import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react-dom'
 // import React, { useState } from 'react'
-import { Form, Container, Button } from 'react-bootstrap'
-// import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react-dom'
+import { Form, Container, Button, Row, Col } from 'react-bootstrap'
+
 
 const AdventureForm = (props) => {
     // const [difficulty, setdifficulty] = useState(0)
