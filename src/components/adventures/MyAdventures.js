@@ -86,7 +86,8 @@ const MyAdventures = (props) => {
 
     return (
         <>
-            <h3> My adventures</h3>
+        <br></br>
+           <div className='title'><h1>My adventures</h1></div>
             <div style={cardContainerLayout}>
                 {adventureCards}
             </div>
