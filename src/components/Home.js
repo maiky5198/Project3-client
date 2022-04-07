@@ -16,7 +16,7 @@ const Home = (props) => {
 	
 	return (
 		<div style={{  
-  			backgroundImage: "url(" + "https://www.torontoathleticclub.com/Portals/AdelaideClub/EasyDNNnews/491/img-february-22-mountains-cover.jpg" + ")",
+  			backgroundImage: "url(" + "https://i.redd.it/5fvdkmet39j71.png" + ")",
   			backgroundPosition: 'center',
   			backgroundSize: 'cover',
   			backgroundRepeat: 'no-repeat',
