@@ -167,8 +167,8 @@ const ShowAdventures = (props) => {
                 </Card>
             </Container>
             <div className='commentBox'> 
-                {comments}
                 <CommentForm user={user} adventure={adventure} triggerRefresh={() => setUpdated(prev => !prev)} heading="Comments"/>
+                {comments}
             </div>
             <EditAdventureModal 
             adventure = {adventure}
