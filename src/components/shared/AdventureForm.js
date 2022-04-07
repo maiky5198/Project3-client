@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Form, Container, Button } from 'react-bootstrap'
+import { Form, Container, Button, FormSelect, select, Option } from 'react-bootstrap'
 
 const AdventureForm = (props) => {
     const [difficulty, setdifficulty] = useState(0)
-    
+    const [type, setType] = useState()
     const {adventure, handleChange, handleSubmit, heading} = props
 
     return (
@@ -17,13 +17,20 @@ const AdventureForm = (props) => {
                     name='name'
                     onChange={handleChange}
                 />
-                <Form.Label>Type</Form.Label>
-                <Form.Control 
-                    placeholder="What Type of Adventure Are You Logging?"
-                    value={adventure.type}
-                    name='type'
-                    onChange={handleChange}
-                />
+                <br></br>
+                <div>
+                    <select class="form-select form-select-md mb-3" id="types" value={adventure.type}
+                        onChange={handleChange}>
+                                <option value="Walk">Walk</option>
+                                <option value="Road Run">Road Run</option>
+                                <option value="Trail Run">Trail Run</option>
+                                <option value="Road Bike">Road Bike</option>
+                                <option value="Mountain Bike">Mountain Bike</option>
+                                <option value="Hike">Hike</option>
+                                <option value="Swim">Swim</option>
+                    </select>
+                </div>
+                <br></br>
                 <Form.Label>Time</Form.Label>
                 <Form.Control 
                     placeholder="How Long Was Your Adventure (Minutes)?"
@@ -32,6 +39,7 @@ const AdventureForm = (props) => {
                     name='time'
                     onChange={handleChange}
                 />
+                <br></br>
                <Form.Label>Distance</Form.Label>
                 <Form.Control 
                     placeholder="What Was The Distance of Your Adventure (Miles)?"
@@ -40,6 +48,7 @@ const AdventureForm = (props) => {
                     type="number"
                     onChange={handleChange}
                 />
+                <br></br>
                 <Form.Label>Difficulty Level</Form.Label>
                 <p>{adventure.difficultyLevel}</p>
                    <Form.Control 
@@ -53,6 +62,7 @@ const AdventureForm = (props) => {
                    id="customRange3"
                    onChange={handleChange}
                    />
+                   <br></br>
                 {/* <Form.Label>Difficulty Level</Form.Label>
                 <Form.Control 
                     // placeholder="how difficult was your adventure on a scale of 0-5?"
@@ -73,6 +83,8 @@ const AdventureForm = (props) => {
                     value={adventure.location}
                     name='location'
                     onChange={handleChange}
+                    minlength="5"
+                    maxlength="5"
                 />
                 {/* <Form.Label>Geo location</Form.Label> */}
                 {/* <Form.Control 
@@ -81,6 +93,7 @@ const AdventureForm = (props) => {
                     name='geolocation'
                     onChange={handleChange}
                 /> */}
+                <br></br>
                 <Button type='submit'>Submit</Button>
             </Form>
         </Container>
