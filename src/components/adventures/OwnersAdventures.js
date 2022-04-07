@@ -88,7 +88,7 @@ const OwnersAdventures = (props) => {
 
     return (
         <>
-            <h3> Adventures </h3>
+            <div className='title'><h1> Adventures </h1></div>
             <div style={cardContainerLayout}>
                 {adventureCards}
             </div>
