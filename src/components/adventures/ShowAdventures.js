@@ -118,7 +118,7 @@ const ShowAdventures = (props) => {
             <>
             <Container className="fluid" id="showContainer">
                     <Card>
-                        <Card.Header>{adventure.name}</Card.Header>
+                        <Card.Header><h2>{adventure.name}</h2></Card.Header>
                         <Card.Body>
                             <Card.Text>
                             <small>Type: {adventure.type}</small><br/>
@@ -126,6 +126,7 @@ const ShowAdventures = (props) => {
                             <small>Distance: {adventure.distance} miles</small><br/>
                             <small>Difficulty Level: {adventure.difficultyLevel}</small><br/>
                             <small>Location: {adventure.location}</small><br/>
+                            <small>Description: {adventure.description}</small><br/>
                             {weather &&
                             <>
                             <small>Current Weather: {weather.main}, {weather.description}</small><br/>
