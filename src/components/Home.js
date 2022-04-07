@@ -18,6 +18,9 @@ const Home = (props) => {
 		<div style={{  
   			backgroundImage: "url('https://i.redd.it/5fvdkmet39j71.png')",
   			backgroundPosition: 'center',
+			position: 'fixed',
+			minHeight: '100%',
+			minWidth: '100%',  
   			backgroundSize: 'cover',
   			backgroundRepeat: 'no-repeat',
 			height: '750px',
