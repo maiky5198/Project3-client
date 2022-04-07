@@ -30,7 +30,7 @@ const Home = (props) => {
 				color: '#0D0D0D',
 				padding: '20px 0 5px 0'
 			}}
-			>Welcome to the adventureR!</h1>
+			>Welcome to AdventureR!</h1>
 			<h3 style={{
 				textAlign: 'center',
 				color: '#0D0D0D',
