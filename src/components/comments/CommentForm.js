@@ -53,7 +53,7 @@ const CommentForm = (props) => {
                     name='note'
                     onChange={handleChange}
                 />
-                <Button type='submit' className='float-end m-1' >Submit</Button>
+                <Button type='submit' className='float-end m-2' >Submit</Button>
             </Form>
         </Container>
     )
