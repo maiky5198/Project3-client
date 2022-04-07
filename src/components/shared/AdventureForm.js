@@ -39,7 +39,17 @@ const AdventureForm = (props) => {
                                 <option value="Swim">Fishing</option>
                     </select>
                 </div>
-                
+                <Form.Label>Description</Form.Label>
+                <Form.Control
+                    style={{
+                        width: '50%'
+                    }} 
+                    placeholder="Description of your adventure?"
+                    value={adventure.description}
+                    name='time'
+                    onChange={handleChange}
+                />
+                <br></br>
                 <Form.Label>Time</Form.Label>
                 <Form.Control
                     style={{
