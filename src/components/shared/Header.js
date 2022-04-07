@@ -71,7 +71,7 @@ const alwaysOptions = (
 // }
 
 const Header = ({ user }) => (
-	<Navbar className='custom-nav' bg='myBlue' variant='light' expand='md'>
+	<Navbar sticky='top' className='custom-nav' bg='myBlue' variant='light' expand='md'>
 		{/* <Navbar.Brand>
 				<Link to='/sign-in' className= 'm-2' style={linkStyle}>
 					AdventureR
@@ -82,7 +82,7 @@ const Header = ({ user }) => (
 			<Nav className='ml-auto'>
 				{user ? authenticatedOptions : unauthenticatedOptions}
 				{user && (
-					<span style={{color: '#0d0d0d', marginLeft: '100px' }}>Welcome, {user.email}</span>
+					<span className='m-2'  style={{color: '#0d0d0d', margin: 'auto'}}>Welcome, {user.email}</span>
 					
 					)}
 				{/* {alwaysOptions} */}
