@@ -56,11 +56,11 @@ const IndexAdventures = (props) => {
                 <Card.Header>{adventure.name} </Card.Header>
                 <Card.Body>
                     <Card.Text>
-                        <Link to={`/adventures/${adventure._id}`}>View {adventure.type}</Link>
+                        <Link className='viewAdventure' to={`/adventures/${adventure._id}`}>View {adventure.type}</Link>
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer>
-                    <Link to={`/adventures/user/${adventure.owner._id}`}>by: {adventure.owner.email}</Link>
+                    <span>by:</span><Link to={`/adventures/user/${adventure.owner._id}`}>{adventure.owner.email}</Link>
                 </Card.Footer>
             </Card>
         ))
