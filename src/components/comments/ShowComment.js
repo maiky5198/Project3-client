@@ -22,21 +22,22 @@ const ShowComment = (props) => {
     
     return (
         <>
-            <Card className="m-2">
-                <Card.Header></Card.Header>
-                <Card.Body>
-                    <small>{comment.note}</small><br/>
-                    <Card.Footer >
-                        author: {comment.owner}
-                    </Card.Footer>
+            <Card className="m-2 w-50">
+                <Card.Header>
+                    author: {comment.owner}
                     {
                         user._id === comment.owner &&
                             <>
-                                <Button onClick={() => destroyComment()}variant="danger">
+                                <div className="float-end">
+                                <Button className='btn-sm' onClick={() => destroyComment()}variant="danger">
                                     X
                                 </Button>
+                                </div>
                             </>
                     }
+                </Card.Header>
+                <Card.Body>
+                    <small>{comment.note}</small><br/>
                 </Card.Body>
             </Card>
         </>

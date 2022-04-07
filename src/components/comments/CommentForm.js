@@ -43,7 +43,7 @@ const CommentForm = (props) => {
     }
 
     return (
-        <Container className="justify-content-center">
+        <Container className="justify-content-center w-75 mt-5">
             <h3>{heading}</h3>
             <Form onSubmit={handleSubmit}>
                 <Form.Label>Add a comment</Form.Label>
@@ -53,57 +53,7 @@ const CommentForm = (props) => {
                     name='note'
                     onChange={handleChange}
                 />
-                {/* <Form.Label>Type</Form.Label>
-                <Form.Control 
-                    placeholder="what type of adventure are you logging?"
-                    value={adventure.type}
-                    name='type'
-                    onChange={handleChange}
-                />
-                <Form.Label>Time</Form.Label>
-                <Form.Control 
-                    placeholder="how long was your adventure (minutes)?"
-                    value={adventure.time}
-                    type="number"
-                    name='time'
-                    onChange={handleChange}
-                />
-               <Form.Label>Distance</Form.Label>
-                <Form.Control 
-                    placeholder="what was the distance of your adventure (miles)?"
-                    value={adventure.distance}
-                    name='distance'
-                    type="number"
-                    onChange={handleChange}
-                />
-                <Form.Label>Difficulty Level</Form.Label>
-                <p>{difficulty}</p>
-                   <Form.Control 
-                   type="range" 
-                   onChange={handleChange} 
-                   value={adventure.difficultyLevel}
-                   name="difficultyLevel" 
-                   className="form-range" 
-                   min="0" 
-                   max="5" 
-                   step="1" 
-                   id="customRange3"
-                   />
-                <Form.Label>Location</Form.Label>
-                <Form.Control 
-                    placeholder="where was your adventure?"
-                    value={adventure.location}
-                    name='location'
-                    onChange={handleChange}
-                />
-                <Form.Label>Geo location</Form.Label>
-                <Form.Control 
-                    placeholder="latitude and longitude of adventure?"
-                    value={adventure.geolocation}
-                    name='geolocation'
-                    onChange={handleChange}
-                /> */}
-                <Button type='submit' >Submit</Button>
+                <Button type='submit' className='float-end m-1' >Submit</Button>
             </Form>
         </Container>
     )

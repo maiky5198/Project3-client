@@ -77,3 +77,10 @@ Header {
 .viewAdventure:hover {
   color: #a6845b;
 }
+
+.commentBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
