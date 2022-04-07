@@ -12,6 +12,12 @@ const linkStyle = {
 }
 const authenticatedOptions = (
 	<>
+
+		<Navbar.Brand>
+			<Link to='/adventures' className= 'm-2' style={linkStyle}>
+				AdventureR
+			</Link>
+        </Navbar.Brand>	
 		<Nav.Item className="m-2">
 			<Link  to='/adventures' style={linkStyle}>All Adventures</Link>
 		</Nav.Item>
@@ -36,6 +42,11 @@ const authenticatedOptions = (
 
 const unauthenticatedOptions = (
 	<>
+		<Navbar.Brand>
+			<Link to='/sign-in' className= 'm-2' style={linkStyle}>
+				AdventureR
+			</Link>
+        </Navbar.Brand>
         <Nav.Item className="m-2">
 		    <Link to='sign-up' style={linkStyle}>Sign Up</Link>
         </Nav.Item>
@@ -53,22 +64,28 @@ const alwaysOptions = (
 	</>
 )
 
+// const homeName = () => {
+// 	if (use){
+
+// 	}
+// }
+
 const Header = ({ user }) => (
 	<Navbar className='custom-nav' bg='myBlue' variant='light' expand='md'>
-		<Navbar.Brand>
-            <Link to='/adventures' className= 'm-2' style={linkStyle}>
-                AdventureR
-				
-            </Link>
-        </Navbar.Brand>
+		{/* <Navbar.Brand>
+				<Link to='/sign-in' className= 'm-2' style={linkStyle}>
+					AdventureR
+				</Link>
+        </Navbar.Brand> */}
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
 		<Navbar.Collapse id='basic-navbar-nav'>
 			<Nav className='ml-auto'>
-				{user && (
-					<span className='m-2'style={{color: '#0d0d0d'}}>Welcome, {user.email}</span>
-				)}
-				{alwaysOptions}
 				{user ? authenticatedOptions : unauthenticatedOptions}
+				{user && (
+					<span style={{color: '#0d0d0d', marginLeft: '100px' }}>Welcome, {user.email}</span>
+					
+					)}
+				{/* {alwaysOptions} */}
 			</Nav>
 		</Navbar.Collapse>
 	</Navbar>
