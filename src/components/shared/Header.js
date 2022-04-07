@@ -1,4 +1,4 @@
-import { toBePartiallyChecked } from '@testing-library/jest-dom/dist/matchers'
+
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
@@ -56,13 +56,6 @@ const unauthenticatedOptions = (
 	</>
 )
 
-const alwaysOptions = (
-	<>
-		<Nav.Link>
-			
-		</Nav.Link>
-	</>
-)
 
 // const homeName = () => {
 // 	if (use){
