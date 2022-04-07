@@ -35,8 +35,8 @@ const CreateAdventure = (props) => {
                 adventure.type = "Mountain Bike"
             } else if(e.target.value == "Hike"){
                 adventure.type = "Hike"
-            } else if(e.target.value == "Swim"){
-                adventure.type = "Swim"
+            } else if(e.target.value == "Fishing"){
+                adventure.type = "Fishing"
             } 
             
 
