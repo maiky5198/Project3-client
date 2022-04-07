@@ -1,3 +1,6 @@
+import React, { useState } from 'react'
+import { Form, Container, Button, FormSelect, select, Option, Row, Col } from 'react-bootstrap'
+import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react-dom'
 // import React, { useState } from 'react'
 import { Form, Container, Button } from 'react-bootstrap'
 // import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react-dom'
@@ -8,25 +11,37 @@ const AdventureForm = (props) => {
     const {adventure, handleChange, handleSubmit, heading} = props
 
     return (
-        <Container className="justify-content-center">
-            <h3>{heading}</h3>
+        <Container className="justify-content-center" style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            textAlign: 'center'
+        }}>
+            <br></br>
+            <h1>{heading}</h1>
+            <br></br>
             <Form onSubmit={handleSubmit}>
+            <Row>
+                <Col>
                 <Form.Label>Name</Form.Label>
                 <Form.Control 
                     style={{
-                        width: '50%'
+                        width: '100%',
+                        textAlign: 'center'
                     }}
                     placeholder="What is The Name of Your Adventure?"
                     value={adventure.name}
                     name='name'
                     onChange={handleChange}
                 />
-                <br></br>
+                </Col>
+                <Col>
                 <div>
-                <h6>Adventure Type</h6>
+                <Form.Label>Adventure Type</Form.Label>
                     <select 
                         style={{
-                            width: '50%'
+                            width: '100%',
+                            textAlign: 'center'
                         }}
                         className="form-select form-select-md mb-3" id="types" value={adventure.type}
                         onChange={handleChange}>
@@ -39,10 +54,13 @@ const AdventureForm = (props) => {
                                 <option value="Swim">Fishing</option>
                     </select>
                 </div>
+                </Col>
+            </Row>
                 <Form.Label>Description</Form.Label>
                 <Form.Control
                     style={{
-                        width: '50%'
+                        width: '100%',
+                        textAlign: 'center'
                     }} 
                     placeholder="Description of your adventure?"
                     value={adventure.description}
@@ -50,52 +68,73 @@ const AdventureForm = (props) => {
                     onChange={handleChange}
                 />
                 <br></br>
-                <Form.Label>Time</Form.Label>
-                <Form.Control
-                    style={{
-                        width: '50%'
-                    }} 
-                    placeholder="How Long Was Your Adventure (Minutes)?"
-                    value={adventure.time}
-                    type="number"
-                    name='time'
-                    onChange={handleChange}
+            <Row>
+                <Col>
+                    <Form.Label>Time</Form.Label>
+                        <Form.Control
+                            style={{
+                            width: '100%',
+                            textAlign: 'center'
+                        }} 
+                        placeholder="How Long Was Your Adventure (Minutes)?"
+                        value={adventure.time}
+                        type="number"
+                        name='time'
+                        onChange={handleChange}
                 />
+                </Col>
                 <br></br>
-               <Form.Label>Distance</Form.Label>
-                <Form.Control 
-                    style={{
-                        width: '50%'
-                    }}
-                    placeholder="What Was The Distance of Your Adventure?"
-                    value={adventure.distance}
-                    name='distance'
-                    type="number"
-                    onChange={handleChange}
-                />
-                <br></br>
-                <Form.Label>Difficulty Level</Form.Label>
-                <p style={{
-                    border: '1px solid #d3d3d3',
-                    borderRadius: '5px',
-                    textAlign: 'center',
-                    width: '5%',
-                    padding: '7px'
-                    }}>{adventure.difficultyLevel}</p>
+                <Col>
+                    <Form.Label>Distance</Form.Label>
                         <Form.Control 
                             style={{
-                                border: 'none'
+                                width: '100%',
+                                textAlign: 'center'
                             }}
-                            type="range" 
-                            value={adventure.difficultyLevel}
-                            name="difficultyLevel" 
-                            className="form-range" 
-                            min="0" 
-                            max="5" 
-                            step="1" 
-                            id="customRange3"
+                            placeholder="What Was The Distance of Your Adventure?"
+                            value={adventure.distance}
+                            name='distance'
+                            type="number"
                             onChange={handleChange}
+                />
+                </Col>
+                    </Row>
+                <br></br>
+                <Row style={{
+                    textAlign: 'center',
+                    justifyContent: 'center'
+                }}>
+                    <Col style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                    }}>
+                        <Form.Label>Difficulty Level</Form.Label>
+                            <div style={{
+                                border: '1px solid #d3d3d3',
+                                borderRadius: '5px',
+                                textAlign: 'center',
+                                width: '5%',
+                                padding: '7px'
+                                }}>{adventure.difficultyLevel}</div>
+                            <Form.Control 
+                                style={{
+                                    border: 'none',
+                                    textAlign: 'center'
+                                 }}
+                                type="range" 
+                                value={adventure.difficultyLevel}
+                                name="difficultyLevel" 
+                                className="form-range" 
+                                min="0" 
+                                max="5" 
+                                step="1" 
+                                id="customRange3"
+                                onChange={handleChange}
                         />
+                    </Col>
+                </Row>
                    <br></br>
                 {/* <Form.Label>Difficulty Level</Form.Label>
                 <Form.Control 
@@ -111,10 +150,21 @@ const AdventureForm = (props) => {
                     id="customRange3"
                     onChange={handleChange}
                 /> */}
+            <Row>
+                <Col style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                    }}>
                 <Form.Label>Location</Form.Label>
                 <Form.Control
                     style={{
-                        width: '50%'
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: '50%',
+                        textAlign: 'center'
                     }} 
                     placeholder="Zip Code of Your Adventure?"
                     value={adventure.location}
@@ -131,6 +181,8 @@ const AdventureForm = (props) => {
                     onChange={handleChange}
                 /> */}
                 <br></br>
+                </Col>
+            </Row>
                 <Button type='submit'>Submit</Button>
             </Form>
         </Container>
