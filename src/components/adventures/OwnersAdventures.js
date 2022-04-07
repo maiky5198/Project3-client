@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { getOwnerAdventures } from '../../api/adventures'
 import { Card, Spinner, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
@@ -27,7 +27,7 @@ const OwnersAdventures = (props) => {
             })
             .catch(console.error)
             
-    }, [])
+    }, [user, ownerId])
 
     
     if (!ownersAdventures) {

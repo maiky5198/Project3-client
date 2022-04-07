@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+// import React, { useState } from 'react'
 import { Card, Button } from 'react-bootstrap'
 import { removeComment } from '../../api/comments'
 
@@ -6,7 +6,7 @@ const ShowComment = (props) => {
     // most of these are simply to pass to edit modal
     const {comment, user, adventure, triggerRefresh} = props
 
-    const [commentOwner, setCommentOwner] = useState(null)
+    // const [commentOwner, setCommentOwner] = useState(null)
 
 
 

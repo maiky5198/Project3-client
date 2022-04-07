@@ -13,7 +13,7 @@ const cardContainerLayout = {
 const MyAdventures = (props) => {
     const [myAdventures, setMyAdventures] = useState(null)
 
-    const {user, msgAlert} = props
+    const {user} = props
 
     useEffect(() => {
         console.log('user id', user._id)
@@ -24,7 +24,7 @@ const MyAdventures = (props) => {
             })
             .catch(console.error)
             
-    }, [])
+    }, [user])
 
     
     if (!myAdventures) {

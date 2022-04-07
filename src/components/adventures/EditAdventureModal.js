@@ -3,7 +3,7 @@ import {Modal} from 'react-bootstrap'
 import AdventureForm from '../shared/AdventureForm'
 
 const EditAdventureModal = (props) => {
-    const { user, show, handleClose, updateAdventure, msgAlert, triggerRefresh } = props
+    const { user, show, handleClose, updateAdventure, triggerRefresh } = props
     const [adventure, setAdventure] = useState(props.adventure)
 
     const handleChange = (e) => {

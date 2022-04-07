@@ -62,7 +62,7 @@ const ShowAdventures = (props) => {
             })
             .catch(console.error)  
             // getWeather()   
-    }, [updated])
+    }, [updated, id])
 
     useEffect(()=> {
         if(coordinates) {
@@ -149,7 +149,7 @@ const ShowAdventures = (props) => {
                     <div>
                         <div ref={mapContainer} className="map-container" />
                     </div>
-                    {adventure.owner == user._id && 
+                    {adventure.owner === user._id && 
                     <Card.Footer>
                             <Button onClick={() => setGearModalOpen(true)} className="m-2" variant="info">
                                 Add gear!
