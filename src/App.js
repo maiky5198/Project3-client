@@ -17,6 +17,7 @@ import CreateAdventure from './components/adventures/CreateAdventure'
 import ShowAdventures from './components/adventures/ShowAdventures'
 import MyAdventures from './components/adventures/MyAdventures'
 import IndexAdventures from './components/adventures/IndexAdventures'
+import OwnersAdventures from './components/adventures/OwnersAdventures';
 
 const App = () => {
 
@@ -85,6 +86,10 @@ const App = () => {
 			<Route
 					path='/adventures/:id'
 					element={<ShowAdventures msgAlert={msgAlert} user={user} />}
+				/>
+				<Route
+					path='/adventures/user/:ownerId'
+					element={<OwnersAdventures user={user} />}
 				/>
 			<Route
 				path='/adventures/mine'
