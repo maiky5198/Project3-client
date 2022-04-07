@@ -82,7 +82,7 @@ const Header = ({ user }) => (
 			<Nav className='ml-auto'>
 				{user ? authenticatedOptions : unauthenticatedOptions}
 				{user && (
-					<span className='m-2'  style={{color: '#0d0d0d', margin: 'auto'}}>Welcome, {user.email}</span>
+					<span className='m-2'  style={{color: 'white', margin: 'auto'}}>Welcome, {user.email}</span>
 					
 					)}
 				{/* {alwaysOptions} */}
