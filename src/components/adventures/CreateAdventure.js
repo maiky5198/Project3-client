@@ -21,11 +21,24 @@ const CreateAdventure = (props) => {
             const name = e.target.name
             let value = e.target.value
             console.log('etarget type', e.target.type)
-            console.log('this is e.target checked', e.target.checked)
-    
             if (e.target.type === 'number') {
                 value = parseInt(e.target.value)
-            }
+            } if(e.target.value == "Walk"){
+                adventure.type = "Walk"
+            } else if(e.target.value == "Road Run"){
+                adventure.type = "Road Run"
+            } else if(e.target.value == "Trail Run" ){
+                adventure.type = "Trail Run"
+            } else if(e.target.value == "Road Bike"){
+                adventure.type = "Road Bike"
+            } else if(e.target.value == "Mountain Bike"){
+                adventure.type = "Mountain Bike"
+            } else if(e.target.value == "Hike"){
+                adventure.type = "Hike"
+            } else if(e.target.value == "Swim"){
+                adventure.type = "Swim"
+            } 
+            
 
             const updatedValue = { [name]: value }
 
