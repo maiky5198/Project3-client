@@ -69,3 +69,11 @@ Header {
   border-radius: 50%;
   cursor: pointer;
 }
+
+.viewAdventure {
+  text-decoration: none;
+  color: #0d0d0d;
+}
+.viewAdventure:hover {
+  color: #a6845b;
+}
