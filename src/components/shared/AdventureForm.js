@@ -61,7 +61,7 @@ const AdventureForm = (props) => {
                     }} 
                     placeholder="Description of your adventure?"
                     value={adventure.description}
-                    name='time'
+                    name='description'
                     onChange={handleChange}
                 />
                 <br></br>
