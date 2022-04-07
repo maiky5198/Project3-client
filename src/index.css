@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap");
 
 #root {
-  background-color: #7c3a3a00; 
-  height: 100vh;          
+  background-color: #7c3a3a00;
+  height: 100vh;
   width: 100vw;
   background-repeat: no-repeat;
-  background-size: cover;  
+  background-size: cover;
 }
 
 body {
@@ -14,7 +14,6 @@ body {
   /* background:  */
   /* linear-gradient(325deg, rgb(3 88.843 140.569) 0%, rgb(3.265 88.907 140.553) 6.25%, rgb(3.492 76.723 140.298) 12.5%, rgb(36.945% 0% 60.253%) 18.75%, rgb(45.411% 6.4% 49.67%) 25%, rgb(57.004% 4.066% 47.637%) 31.25%, rgb(68.176% 7.509% 44.247%) 37.5%, rgb(77.887% 16.593% 39.797%) 43.75%, rgb(217.257 171.13 115.547) 50%, rgb(217.992 171.165 115.569) 56.25%, rgb(217 171 115.089) 62.5%, rgb(217.313 171.281 115) 68.75%, rgb(217.625 171.087 115) 75%, rgb(242.395 218.529 145) 81.25%, rgb(242.565 218.573 145) 87.5%, rgb(242.9 218.202 145.37) 93.75%, rgb(242.961 218.412 145.412) 100% )
    ; */
-   
 }
 
 code {
@@ -58,17 +57,15 @@ Header {
 }
 
 #displayBox {
-  display:flex;
+  display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
 }
-
 .marker {
-  background-image: '/mapbox-icon\ \(1\).png';
+  background-image: "/mapbox-icon\ \(1\).png";
   background-size: cover;
   width: 50px;
   height: 50px;
   border-radius: 50%;
   cursor: pointer;
 }
-
