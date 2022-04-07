@@ -17,6 +17,11 @@ export const getMyAdventures = (user) => {
     })
 }
 
+//index of a specific user's adventures function
+export const getOwnerAdventures = (ownerId) => {
+    return axios(`${apiUrl}/adventures/user/${ownerId}`)
+}
+
 //show function
 export const getOneAdventure = (adventureId) => {
     return axios(`${apiUrl}/adventures/${adventureId}`)
