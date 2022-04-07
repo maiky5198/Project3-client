@@ -22,7 +22,7 @@ const ShowComment = (props) => {
     
     return (
         <>
-            <Card className="m-2 w-50">
+            <Card className="m-2 w-50 shadow p-3 mb-5 bg-body rounded">
                 <Card.Header>
                     author: {comment.owner}
                     {
