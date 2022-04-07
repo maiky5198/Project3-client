@@ -86,7 +86,7 @@ const IndexAdventures = (props) => {
 
     return (
         <>
-            <h3>All of the adventures</h3>
+            <h1>All of the adventures</h1>
             <div style={cardContainerLayout}>
                 {adventureCards}
             </div>
