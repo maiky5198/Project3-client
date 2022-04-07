@@ -4,7 +4,7 @@ import { Container } from 'react-bootstrap'
 const Home = (props) => {
 	// const { msgAlert, user } = props
 	console.log('props in home', props)
-	const {user, msgAlert} = props
+	// const {user, msgAlert} = props
 	const navigate = useNavigate()
 
 	const signup = () => {
@@ -16,11 +16,11 @@ const Home = (props) => {
 	
 	return (
 		<div style={{  
-  			backgroundImage: "url(" + "https://i.redd.it/5fvdkmet39j71.png" + ")",
+  			backgroundImage: "url('https://i.redd.it/5fvdkmet39j71.png')",
   			backgroundPosition: 'center',
   			backgroundSize: 'cover',
   			backgroundRepeat: 'no-repeat',
-			  height: '750px',
+			height: '750px',
 			//   border: 'solid 3px black',
 			
 			}}>
@@ -34,7 +34,6 @@ const Home = (props) => {
 			<h3 style={{
 				textAlign: 'center',
 				color: '#0D0D0D',
-				textAlign: 'center'
 
 			}}
 			>Sign Up or Sign In to log your next adventure with us!</h3>

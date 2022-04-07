@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Form, Container, Button } from 'react-bootstrap'
+// import { Form, Container, Button } from 'react-bootstrap'
 import { createAdventure } from '../../api/adventures'
 import {createAdventureSuccess, createAdventureFailure} from '../shared/AutoDismissAlert/messages'
 import { useNavigate } from 'react-router-dom'
@@ -23,19 +23,19 @@ const CreateAdventure = (props) => {
             console.log('etarget type', e.target.type)
             if (e.target.type === 'number') {
                 value = parseInt(e.target.value)
-            } if(e.target.value == "Walk"){
+            } if(e.target.value === "Walk"){
                 adventure.type = "Walk"
-            } else if(e.target.value == "Road Run"){
+            } else if(e.target.value === "Road Run"){
                 adventure.type = "Road Run"
-            } else if(e.target.value == "Trail Run" ){
+            } else if(e.target.value === "Trail Run" ){
                 adventure.type = "Trail Run"
-            } else if(e.target.value == "Road Bike"){
+            } else if(e.target.value === "Road Bike"){
                 adventure.type = "Road Bike"
-            } else if(e.target.value == "Mountain Bike"){
+            } else if(e.target.value === "Mountain Bike"){
                 adventure.type = "Mountain Bike"
-            } else if(e.target.value == "Hike"){
+            } else if(e.target.value === "Hike"){
                 adventure.type = "Hike"
-            } else if(e.target.value == "Fishing"){
+            } else if(e.target.value === "Fishing"){
                 adventure.type = "Fishing"
             } 
             

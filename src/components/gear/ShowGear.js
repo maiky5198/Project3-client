@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Card, Button } from 'react-bootstrap'
 import EditGearModal from './EditGearModal'
 import { removeGear } from '../../api/gear'
-import { Container } from 'react-bootstrap'
 
 const ShowGear = (props) => {
     // most of these are simply to pass to edit modal
