@@ -48,18 +48,36 @@ const MyAdventures = (props) => {
     let adventureCards
 
     if (myAdventures.length > 0) {
-        adventureCards = myAdventures.map(adventure => (
-            // one method of styling, usually reserved for a single style
-            // we can use inline, just like in html
-            <Card key={adventure._id} style={{ width: '30%' }} className="m-2">
-                <Card.Header>{adventure.name}</Card.Header>
-                <Card.Body>
-                    <Card.Text>
-                        <Link to={`/adventures/${adventure._id}`}>View {adventure.type}</Link>
-                    </Card.Text>
-                </Card.Body>
-            </Card>
-        ))
+        adventureCards = myAdventures.map(adventure => {
+            let activity 
+             if (adventure.type === 'Walk' || adventure.type === 'Trail Run' || adventure.type === 'Road Run'){
+                    activity = jogging
+                }
+             if (adventure.type === 'Road Bike' || adventure.type === 'Mountain Bike'){
+                    activity = biking
+                } 
+             if (adventure.type === 'Hike'){
+                    activity = hiking
+                } 
+             if (adventure.type === 'Fishing'){
+                    activity = fishing
+                } 
+               
+            return (
+                <Card key={adventure._id} style={{width: '30%' }} className="m-2 shadow p-3 mb-5 bg-body rounded">
+                    <img src= {activity} className= 'card-img-top'></img>
+                    <Card.Header>{adventure.name} </Card.Header>
+                    <Card.Body>
+                        <Card.Text>
+                            <Link className='viewAdventure' to={`/adventures/${adventure._id}`}>View {adventure.type}</Link>
+                        </Card.Text>
+                    </Card.Body>
+                    <Card.Footer>
+                        <span>by:</span><Link to={`/adventures/user/${adventure.owner._id}`}>{adventure.owner.email}</Link>
+                    </Card.Footer>
+                </Card>
+            )
+        })
     }
 
     return (
