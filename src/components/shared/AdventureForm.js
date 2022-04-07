@@ -1,13 +1,10 @@
 import React, { useState } from 'react'
 import { Form, Container, Button, FormSelect, select, Option, Row, Col } from 'react-bootstrap'
 import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react-dom'
-// import React, { useState } from 'react'
-import { Form, Container, Button } from 'react-bootstrap'
-// import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react-dom'
 
 const AdventureForm = (props) => {
-    // const [difficulty, setdifficulty] = useState(0)
-    // const [type, setType] = useState()
+    const [difficulty, setdifficulty] = useState(0)
+    const [type, setType] = useState()
     const {adventure, handleChange, handleSubmit, heading} = props
 
     return (
@@ -43,7 +40,7 @@ const AdventureForm = (props) => {
                             width: '100%',
                             textAlign: 'center'
                         }}
-                        className="form-select form-select-md mb-3" id="types" value={adventure.type}
+                        class="form-select form-select-md mb-3" id="types" value={adventure.type}
                         onChange={handleChange}>
                                 <option value="Walk">Walk</option>
                                 <option value="Road Run">Road Run</option>
@@ -170,8 +167,8 @@ const AdventureForm = (props) => {
                     value={adventure.location}
                     name='location'
                     onChange={handleChange}
-                    minLength="5"
-                    maxLength="5"
+                    minlength="5"
+                    maxlength="5"
                 />
                 {/* <Form.Label>Geo location</Form.Label> */}
                 {/* <Form.Control 
