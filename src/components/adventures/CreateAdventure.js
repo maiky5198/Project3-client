@@ -23,7 +23,8 @@ const CreateAdventure = (props) => {
             console.log('etarget type', e.target.type)
             if (e.target.type === 'number') {
                 value = parseInt(e.target.value)
-            } if(e.target.value === "Walk"){
+            } 
+            if(e.target.value === "Walk"){
                 adventure.type = "Walk"
             } else if(e.target.value === "Road Run"){
                 adventure.type = "Road Run"

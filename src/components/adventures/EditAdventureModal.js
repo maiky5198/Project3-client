@@ -18,6 +18,21 @@ const EditAdventureModal = (props) => {
             if (e.target.type === 'number') {
                 value = parseFloat(e.target.value)
             }
+            if(e.target.value === "Walk"){
+                adventure.type = "Walk"
+            } else if(e.target.value === "Road Run"){
+                adventure.type = "Road Run"
+            } else if(e.target.value === "Trail Run" ){
+                adventure.type = "Trail Run"
+            } else if(e.target.value === "Road Bike"){
+                adventure.type = "Road Bike"
+            } else if(e.target.value === "Mountain Bike"){
+                adventure.type = "Mountain Bike"
+            } else if(e.target.value === "Hike"){
+                adventure.type = "Hike"
+            } else if(e.target.value === "Fishing"){
+                adventure.type = "Fishing"
+            } 
 
             const updatedValue = { [name]: value }
 
@@ -36,13 +51,6 @@ const EditAdventureModal = (props) => {
         updateAdventure(user, adventure)
             // if create is successful, we should navigate to the show page
             .then(() => handleClose())
-            // then we send a success message
-            // .then(() =>
-            //     msgAlert({
-            //         heading: 'Adventure Updated! Success!',
-            //         message: 'Adventure successfully edited!',
-            //         variant: 'success',
-            //     }))
             .then(() => triggerRefresh())
             // if there is an error, we'll send an error message
             .catch(console.error)
