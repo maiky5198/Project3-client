@@ -3,6 +3,10 @@ import { useParams } from 'react-router-dom'
 import { getOwnerAdventures } from '../../api/adventures'
 import { Card, Spinner, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import fishing from '../../images/fishing.png'
+import hiking from '../../images/hiking.png'
+import jogging from '../../images/jogging.png'
+import biking from '../../images/biking.png'
 
 
 const cardContainerLayout = {
