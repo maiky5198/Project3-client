@@ -24,6 +24,7 @@ const OwnersAdventures = (props) => {
 
     useEffect(() => {
         console.log('user id', user._id)
+        //api call to get all adventures created by a specific user
         getOwnerAdventures(ownerId)
             .then(res => {
                 console.log('res.data', res.data)

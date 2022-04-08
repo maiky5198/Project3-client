@@ -60,46 +60,46 @@ const App = () => {
 						path='/sign-in'
 						element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
 					/>
-          <Route
-            path='/sign-out'
-            element={
-              <RequireAuth user={user}>
-                <SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path='/change-password'
-            element={
-              <RequireAuth user={user}>
-                <ChangePassword msgAlert={msgAlert} user={user} />
-              </RequireAuth>}
-          />
-		  <Route
-					path='/addAdventure'
-					element={
-						<RequireAuth user={user}>	
-							<CreateAdventure msgAlert={msgAlert} user={user} />
+					<Route
+						path='/sign-out'
+						element={
+						<RequireAuth user={user}>
+							<SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
 						</RequireAuth>
-					}
-				/>
-			<Route
-					path='/adventures/:id'
-					element={<ShowAdventures msgAlert={msgAlert} user={user} />}
-				/>
-				<Route
-					path='/adventures/user/:ownerId'
-					element={<OwnersAdventures user={user} />}
-				/>
-			<Route
-				path='/adventures/mine'
-				element={
-					<RequireAuth user={user}>
-						<MyAdventures msgAlert={msgAlert} user={user} />
-					</RequireAuth>}
-			/>
-				
-			</Routes>
+						}
+					/>
+					<Route
+						path='/change-password'
+						element={
+						<RequireAuth user={user}>
+							<ChangePassword msgAlert={msgAlert} user={user} />
+						</RequireAuth>}
+					/>
+					<Route
+								path='/addAdventure'
+								element={
+									<RequireAuth user={user}>	
+										<CreateAdventure msgAlert={msgAlert} user={user} />
+									</RequireAuth>
+								}
+							/>
+						<Route
+								path='/adventures/:id'
+								element={<ShowAdventures msgAlert={msgAlert} user={user} />}
+							/>
+							<Route
+								path='/adventures/user/:ownerId'
+								element={<OwnersAdventures user={user} />}
+							/>
+						<Route
+							path='/adventures/mine'
+							element={
+								<RequireAuth user={user}>
+									<MyAdventures msgAlert={msgAlert} user={user} />
+								</RequireAuth>}
+						/>
+							
+				</Routes>
 				{msgAlerts.map((msgAlert) => (
 					<AutoDismissAlert
 						key={msgAlert.id}

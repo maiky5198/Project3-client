@@ -22,27 +22,16 @@ const IndexAdventures = (props) => {
     const {user, msgAlert} = props
 
     useEffect(() => {
+        //api call to get all the adventures
         getAllAdventures()
             .then(res => {
                 console.log('res.data.adventures', res.data.adventures)
                 setAdventures(res.data.adventures)
             })
-            .then(() => {
-                msgAlert({
-                    heading: 'Index page of adventures!',
-                    message: indexAdventuresSuccess,
-                    variant: 'success',
-                })
-            })
-            .catch(() => {
-                msgAlert({
-                    heading: 'No adventures?!!',
-                    message: indexAdventuresFailure,
-                    variant: 'danger',
-                })
-            })
+            .catch(console.error)
     }, [])
 
+    //loading screen while api call happens
     if (!adventures) {
         return <p>loading...</p>
     } else if (adventures.length === 0) {
@@ -53,6 +42,7 @@ const IndexAdventures = (props) => {
 
     if (adventures.length > 0) {
         adventureCards = adventures.map(adventure => {
+            //sets the image on top of the cards depending on the adventure type
             let activity 
              if (adventure.type === 'Walk' || adventure.type === 'Trail Run' || adventure.type === 'Road Run'){
                     activity = jogging
@@ -77,6 +67,7 @@ const IndexAdventures = (props) => {
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>
+                        {/* link to all adventures made by a specific user */}
                         <span>by:</span><Link to={`/adventures/user/${adventure.owner._id}`}>{adventure.owner.email}</Link>
                     </Card.Footer>
                 </Card>

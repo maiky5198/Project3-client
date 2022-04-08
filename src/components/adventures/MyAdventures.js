@@ -21,6 +21,7 @@ const MyAdventures = (props) => {
 
     useEffect(() => {
         console.log('user id', user._id)
+        //api call to get all adventures made by the current user
         getMyAdventures(user)
             .then(res => {
                 console.log('res.data', res.data)
