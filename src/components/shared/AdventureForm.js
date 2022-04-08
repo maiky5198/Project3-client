@@ -16,7 +16,7 @@ const AdventureForm = (props) => {
             <br></br>
             <h1>{heading}</h1>
             <br></br>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit} className="m-2 p-5 w-100 shadow bg-body rounded">
             <Row>
                 <Col>
                 <Form.Label>Name</Form.Label>
