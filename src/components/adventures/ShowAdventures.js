@@ -25,6 +25,7 @@ const ShowAdventures = (props) => {
     const [coordinates, setCoordinates] = useState(null)
     const [weather, setWeather] = useState(null)
     const [temp, setTemp] = useState(null)
+    const [mapHeight, setMapHeight] = useState('0px')
     const mapContainer = useRef(null);
     const map = useRef(null)
 
@@ -34,6 +35,7 @@ const ShowAdventures = (props) => {
     console.log('id in showAdevtures', id)
 
     const getWeather = () => {
+
         let location = adventure.location
         axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${location},us&units=imperial&appid=${weatherKey}`)
                     .then(responseData => {
@@ -66,6 +68,7 @@ const ShowAdventures = (props) => {
 
     useEffect(()=> {
         if(coordinates) {
+            setMapHeight('400px')
             if (map.current) return // initialize map only once
             map.current = new mapboxgl.Map({
                 container: mapContainer.current,
@@ -174,7 +177,7 @@ const ShowAdventures = (props) => {
                         }   
                     </Card.Body>
                     <div>
-                        <div ref={mapContainer} className="map-container" />
+                        <div ref={mapContainer} className="map-container" style={{height: `${mapHeight}`}}/>
                     </div>
                     {adventure.owner === user._id && 
                     <Card.Footer>
