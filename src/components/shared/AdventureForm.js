@@ -1,6 +1,3 @@
-
-import React, { useState } from 'react'
-// import React, { useState } from 'react'
 import { Form, Container, Button, Row, Col } from 'react-bootstrap'
 
 const AdventureForm = (props) => {
@@ -40,7 +37,7 @@ const AdventureForm = (props) => {
                             width: '100%',
                             textAlign: 'center'
                         }}
-                        class="form-select form-select-md mb-3" id="types" value={adventure.type}
+                        className="form-select form-select-md mb-3" id="types" value={adventure.type}
                         onChange={handleChange}>
                                 <option value="Walk">Walk</option>
                                 <option value="Road Run">Road Run</option>
@@ -154,8 +151,8 @@ const AdventureForm = (props) => {
                     value={adventure.location}
                     name='location'
                     onChange={handleChange}
-                    minlength="5"
-                    maxlength="5"
+                    minLength="5"
+                    maxLength="5"
                 />
                 <br></br>
                 </Col>

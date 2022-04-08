@@ -23,11 +23,11 @@ const OwnersAdventures = (props) => {
     const {ownerId} = useParams()
 
     useEffect(() => {
-        console.log('user id', user._id)
+        // console.log('user id', user._id)
         //api call to get all adventures created by a specific user
         getOwnerAdventures(ownerId)
             .then(res => {
-                console.log('res.data', res.data)
+                // console.log('res.data', res.data)
                 setOwnersAdventures(res.data.adventures)
             })
             .catch(console.error)
@@ -72,7 +72,7 @@ const OwnersAdventures = (props) => {
                
             return (
                 <Card key={adventure._id} style={{width: '30%' }} className="m-2 shadow p-3 mb-5 bg-body rounded">
-                    <img src= {activity} className= 'card-img-top'></img>
+                    <img src= {activity} alt= 'activity' className= 'card-img-top'></img>
                     <Card.Header>{adventure.name} </Card.Header>
                     <Card.Body>
                         <Card.Text>

@@ -42,7 +42,7 @@ const ShowAdventures = (props) => {
                         return responseData
                     })
                     .then(jsonData => {
-                        console.log('coordinates in jsonData', jsonData.data.coord)
+                        // console.log('coordinates in jsonData', jsonData.data.coord)
                         let jsonCoordinates = jsonData.data.coord
                         let jsonWeather = jsonData.data.weather[0]
                         let jsonTemp = jsonData.data.main.temp
@@ -140,12 +140,12 @@ const ShowAdventures = (props) => {
                                     <small>Type: {adventure.type}</small><br/>
                                 </Col>
                                 <Col>
-                                    <small>Time: {adventure.time} minutes</small><br/>
+                                    <small>Time: {adventure.time} Minutes</small><br/>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col>
-                                    <small>Distance: {adventure.distance} miles</small><br/>
+                                    <small>Distance: {adventure.distance} Miles</small><br/>
                                 </Col>
                                 <Col>
                                     <small>Difficulty Level: {adventure.difficultyLevel}</small><br/>
@@ -196,7 +196,7 @@ const ShowAdventures = (props) => {
                     {adventure.owner === user._id && 
                     <Card.Footer>
                             <Button onClick={() => setGearModalOpen(true)} className="m-2" variant="info">
-                                Add gear!
+                                Add Gear!
                             </Button>
                             <Button onClick={() => setModalOpen(true)} className="m-2" variant="warning">
                                 Edit Adventure

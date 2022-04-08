@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { createAdventure } from '../../api/adventures'
-import {createAdventureSuccess, createAdventureFailure} from '../shared/AutoDismissAlert/messages'
+import { createAdventureFailure } from '../shared/AutoDismissAlert/messages'
 import { useNavigate } from 'react-router-dom'
 import AdventureForm from '../shared/AdventureForm'
 

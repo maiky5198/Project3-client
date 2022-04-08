@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap'
 
 const Home = (props) => {
 	// const { msgAlert, user } = props
-	console.log('props in home', props)
+	// console.log('props in home', props)
 	// const {user, msgAlert} = props
 	const navigate = useNavigate()
 
