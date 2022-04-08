@@ -72,7 +72,7 @@ const CreateAdventure = (props) => {
             adventure={adventure}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
-            heading="Add new adventure!"
+            heading="Add New Adventure!"
         />
     )
 }
