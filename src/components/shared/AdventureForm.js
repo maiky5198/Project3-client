@@ -33,6 +33,7 @@ const AdventureForm = (props) => {
                 </Col>
                 <Col>
                 <div>
+                {/* dropdown menu to select an adventure type */}
                 <Form.Label>Adventure Type</Form.Label>
                     <select 
                         style={{
@@ -106,6 +107,7 @@ const AdventureForm = (props) => {
                         justifyContent: 'center',
                         alignItems: 'center'
                     }}>
+                        {/* slider to select difficulty level */}
                         <Form.Label>Difficulty Level</Form.Label>
                             <div style={{
                                 border: '1px solid #d3d3d3',
@@ -132,20 +134,6 @@ const AdventureForm = (props) => {
                     </Col>
                 </Row>
                    <br></br>
-                {/* <Form.Label>Difficulty Level</Form.Label>
-                <Form.Control 
-                    // placeholder="how difficult was your adventure on a scale of 0-5?"
-                    value={adventure.difficultyLevel}
-                    class="form-range"
-                    type="range"
-                    name='difficultyLevel'
-                    step="1"
-                    min="0"
-                    max="5"
-                    for="customRange3"
-                    id="customRange3"
-                    onChange={handleChange}
-                /> */}
             <Row>
                 <Col style={{
                         display: 'flex',
@@ -169,13 +157,6 @@ const AdventureForm = (props) => {
                     minlength="5"
                     maxlength="5"
                 />
-                {/* <Form.Label>Geo location</Form.Label> */}
-                {/* <Form.Control 
-                    placeholder="Latitude And Longitude of Adventure?"
-                    value={adventure.geolocation}
-                    name='geolocation'
-                    onChange={handleChange}
-                /> */}
                 <br></br>
                 </Col>
             </Row>

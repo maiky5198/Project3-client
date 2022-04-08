@@ -6,13 +6,11 @@ import { Link } from 'react-router-dom'
 
 const linkStyle = {
     color: '#F2DB94',
-    textDecoration: 'none',
-	// backgroundColor: 'black',
-	
+    textDecoration: 'none',	
 }
 const authenticatedOptions = (
 	<>
-
+		{/* links to display if a user is signed in */}
 		<Navbar.Brand>
 			<Link to='/adventures' className= 'm-2' style={linkStyle}>
 				AdventureR
@@ -42,6 +40,7 @@ const authenticatedOptions = (
 
 const unauthenticatedOptions = (
 	<>
+	{/* links to display if not signed in */}
 		<Navbar.Brand>
 			<Link to='/sign-in' className= 'm-2' style={linkStyle}>
 				AdventureR
@@ -57,19 +56,9 @@ const unauthenticatedOptions = (
 )
 
 
-// const homeName = () => {
-// 	if (use){
-
-// 	}
-// }
 
 const Header = ({ user }) => (
 	<Navbar sticky='top' className='custom-nav' bg='myBlue' variant='light' expand='md'>
-		{/* <Navbar.Brand>
-				<Link to='/sign-in' className= 'm-2' style={linkStyle}>
-					AdventureR
-				</Link>
-        </Navbar.Brand> */}
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
 		<Navbar.Collapse id='basic-navbar-nav'>
 			<Nav className='ml-auto'>
@@ -78,7 +67,6 @@ const Header = ({ user }) => (
 					<span className='m-2'  style={{color: 'white', margin: 'auto'}}>Welcome, {user.email}</span>
 					
 					)}
-				{/* {alwaysOptions} */}
 			</Nav>
 		</Navbar.Collapse>
 	</Navbar>

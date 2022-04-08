@@ -16,26 +16,26 @@ const weatherKey = process.env.REACT_APP_WEATHERAPIKEY
 
 
 const ShowAdventures = (props) => {
-
+// setting state here
     const [adventure, setAdventure] = useState(null)
     const [modalOpen, setModalOpen] = useState(false)
     const [gearModalOpen, setGearModalOpen] = useState(false)
     const [updated, setUpdated] = useState(false)
-    const navigate = useNavigate()
     const [coordinates, setCoordinates] = useState(null)
     const [weather, setWeather] = useState(null)
     const [temp, setTemp] = useState(null)
     const [mapHeight, setMapHeight] = useState('0px')
+    const navigate = useNavigate()
     const mapContainer = useRef(null);
     const map = useRef(null)
 
-    console.log('props in showAdventures', props)
+    // console.log('props in showAdventures', props)
     const { id } = useParams()
     const {user} = props
-    console.log('id in showAdevtures', id)
+    // console.log('id in showAdevtures', id)
 
+    //this function executes a call to the open weather api so that we can get lat and lon as well as the weather
     const getWeather = () => {
-
         let location = adventure.location
         axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${location},us&units=imperial&appid=${weatherKey}`)
                     .then(responseData => {
@@ -46,57 +46,65 @@ const ShowAdventures = (props) => {
                         let jsonCoordinates = jsonData.data.coord
                         let jsonWeather = jsonData.data.weather[0]
                         let jsonTemp = jsonData.data.main.temp
+                        //here we set the coordinates piece of state equal to the lat and lon of the zip code given in create adventure
                         setCoordinates(jsonCoordinates)
+                        //here we set the weather
                         setWeather(jsonWeather)
+                        //here we set the temp
                         setTemp(jsonTemp)
                     })
                     .catch(console.error)
-        console.log('get weather function')
+        // console.log('get weather function')
     }
 
 
-    // empty dependency array in useEffect to act like component did mount
+    // we put updated in the array so that the page will re-render every time we make an update and trigger the trigger refresh function
     useEffect(() => {
-        console.log('key', process.env.REACT_APP_WEATHERAPIKEY)
+        // console.log('key', process.env.REACT_APP_WEATHERAPIKEY)
+        //calls the api to get a specific adventure
         getOneAdventure(id)
             .then(res => {
                 setAdventure(res.data.adventure)
             })
             .catch(console.error)  
-            // getWeather()   
     }, [updated, id])
 
+    //we put coordinates in the array so that the mapbox map will redraw every time the coordinates change. We did this so it wouldn't try to render before we set coordinates
     useEffect(()=> {
+        //if coordinates is truthy render the map
         if(coordinates) {
+            //sets the map height so that it's bigger than zero
             setMapHeight('400px')
             if (map.current) return // initialize map only once
             map.current = new mapboxgl.Map({
                 container: mapContainer.current,
                 style: 'mapbox://styles/mapbox/streets-v11',
+                //center on the lat and lon taken from the zip code
                 center: [coordinates.lon, coordinates.lat],
                 zoom: 15
             })
         } 
     }, [coordinates])
 
+    //delete's an adventure
     const removeTheAdventure = () => {
         removeAdventure(user, adventure._id)
             .then(() => {navigate(`/adventures`)})
             .catch(console.error)
     }
 
+    //we declare these variables here so we can change them later
     let gearCards
     let comments
 
+    //after we find an adventure, this checks for and renders gear and comments respectively
     if(adventure){
-        // getWeather()
         if (adventure.gear.length > 0) {
             gearCards = adventure.gear.map(gearItem => (
                 // need to pass all props needed for updateGear func in edit modal
                 <ShowGear 
                     key={gearItem._id} gear={gearItem} user={user} adventure={adventure} triggerRefresh={() => setUpdated(prev => !prev)}
                 />
-                // <p key={gearItem._id}>{gearItem.name}</p>
             ))
         }
         if(adventure.comments.length > 0){
@@ -106,6 +114,7 @@ const ShowAdventures = (props) => {
         }
     }
 
+    //display a spinner if there isn't an adventure
     if (!adventure) {
         return (
             <Container fluid className="justify-content-center">
@@ -152,6 +161,7 @@ const ShowAdventures = (props) => {
                             </Row>
                             <Row>
                                 <Col>
+                                {/* display the weather if the weather state is truthy */}
                                     {weather &&
                                     <>
                                         <small>Current Weather: {weather.main}, {weather.description}</small><br/>
@@ -159,6 +169,7 @@ const ShowAdventures = (props) => {
                                     }
                                 </Col>
                                 <Col>
+                                {/* display the temp if the temp state is truthy */}
                                     {temp &&
                                     <> 
                                         <small>Current Temperature: {temp}°F</small><br/>
@@ -168,6 +179,7 @@ const ShowAdventures = (props) => {
                             </Row>
                         </Card.Text>
                         <h4>Gear:</h4>
+                        {/* show gear cards if there is any, or a message indicating it's not necessary if there isn't */}
                         {adventure.gear.length > 0 ? 
                             <div className='gearBox'>
                                 {gearCards}
@@ -176,9 +188,11 @@ const ShowAdventures = (props) => {
                             <p>No gear required!</p>       
                         }   
                     </Card.Body>
+                    {/* this is the mapbox map */}
                     <div>
                         <div ref={mapContainer} className="map-container" style={{height: `${mapHeight}`}}/>
                     </div>
+                    {/* if the user owns this adventure allow them to add gear, edit, or delete it */}
                     {adventure.owner === user._id && 
                     <Card.Footer>
                             <Button onClick={() => setGearModalOpen(true)} className="m-2" variant="info">
@@ -193,6 +207,7 @@ const ShowAdventures = (props) => {
     
                     </Card.Footer>                        
                     }
+                    {/* this button triggers the function to get the weather and display the map */}
                     <Button onClick={() => getWeather()}>Get Map</Button>
                 </Card>
             </Container>
@@ -200,6 +215,7 @@ const ShowAdventures = (props) => {
                 <CommentForm user={user} adventure={adventure} triggerRefresh={() => setUpdated(prev => !prev)} heading="Comments"/>
                 {comments}
             </div>
+            {/* a pop up to edit the adventure */}
             <EditAdventureModal 
             adventure = {adventure}
             show={modalOpen}
@@ -209,6 +225,7 @@ const ShowAdventures = (props) => {
             handleClose={() => setModalOpen(false)}
     
             />
+            {/* a pop up to add the gear */}
             <AddGearModal
                 show={gearModalOpen}
                 user={user}

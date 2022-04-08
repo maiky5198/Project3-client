@@ -11,7 +11,7 @@ const ShowComment = (props) => {
 
 
 
-
+    //this function delete's a comment
     const destroyComment = () => {
         removeComment(user, adventure._id, comment._id)
             .then(() => triggerRefresh())
@@ -25,6 +25,7 @@ const ShowComment = (props) => {
             <Card className="m-2 w-50 shadow p-3 mb-5 bg-body rounded">
                 <Card.Header>
                     author: {comment.owner}
+                    {/* gives the option to delete a comment if the user is the owner of that comment */}
                     {
                         user._id === comment.owner &&
                             <>
