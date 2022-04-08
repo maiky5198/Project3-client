@@ -44,7 +44,7 @@ const MyAdventures = (props) => {
     if (myAdventures.length === 0) {
         return (
             <div>
-                <h3> My adventures</h3>   
+                <h3> My Adventures</h3>   
                 <p>You have no adventures, go explore!</p>
             </div>
         )
@@ -88,7 +88,7 @@ const MyAdventures = (props) => {
     return (
         <>
         <br></br>
-           <div className='title'><h1>My adventures</h1></div>
+           <div className='title'><h1>My Adventures</h1></div>
             <div style={cardContainerLayout}>
                 {adventureCards}
             </div>
