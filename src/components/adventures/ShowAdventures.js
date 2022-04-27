@@ -9,6 +9,7 @@ import CommentForm from '../comments/CommentForm'
 import ShowComment from '../comments/ShowComment'
 import axios from 'axios'
 import mapboxgl from 'mapbox-gl'
+mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 require('dotenv').config()
 const mapKey = process.env.REACT_APP_MAPBOX_TOKEN
 mapboxgl.accessToken = `${mapKey}`
