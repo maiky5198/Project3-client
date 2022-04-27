@@ -12,8 +12,9 @@ import mapboxgl from 'mapbox-gl'
 require('dotenv').config()
 const mapKey = process.env.REACT_APP_MAPBOX_TOKEN
 mapboxgl.accessToken = `${mapKey}`
+console.log('mapkey?', mapKey)
 const weatherKey = process.env.REACT_APP_WEATHERAPIKEY
-
+console.log('weatherkey?', weatherKey)
 
 const ShowAdventures = (props) => {
 // setting state here
