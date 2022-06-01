@@ -9,12 +9,14 @@ import CommentForm from '../comments/CommentForm'
 import ShowComment from '../comments/ShowComment'
 import axios from 'axios'
 import 'mapbox-gl/dist/mapbox-gl.css';
-import mapboxgl from 'mapbox-gl'
-mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
+import mapboxgl from 'mapbox-gl';
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+// mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 require('dotenv').config()
-const mapKey = process.env.REACT_APP_MAPBOX_TOKEN
-mapboxgl.accessToken = `${mapKey}`
-console.log('mapkey?', mapKey)
+// const mapKey = process.env.REACT_APP_MAPBOX_TOKEN
+// mapboxgl.accessToken = `${mapKey}`
+// console.log('mapkey?', mapKey)
+const googleKey = process.env.REACT_APP_GOOGLEAPIKEY
 const weatherKey = process.env.REACT_APP_WEATHERAPIKEY
 console.log('weatherkey?', weatherKey)
 
@@ -24,7 +26,7 @@ const ShowAdventures = (props) => {
     const [modalOpen, setModalOpen] = useState(false)
     const [gearModalOpen, setGearModalOpen] = useState(false)
     const [updated, setUpdated] = useState(false)
-    const [coordinates, setCoordinates] = useState(null)
+    const [coordinates, setCoordinates] = useState({lat:0,lng:0})
     const [weather, setWeather] = useState(null)
     const [temp, setTemp] = useState(null)
     const [mapHeight, setMapHeight] = useState('0px')
@@ -50,7 +52,8 @@ const ShowAdventures = (props) => {
                         let jsonWeather = jsonData.data.weather[0]
                         let jsonTemp = jsonData.data.main.temp
                         //here we set the coordinates piece of state equal to the lat and lon of the zip code given in create adventure
-                        setCoordinates(jsonCoordinates)
+                        console.log(jsonCoordinates)
+                        setCoordinates({lat:jsonCoordinates.lat,lng:jsonCoordinates.lon})
                         //here we set the weather
                         setWeather(jsonWeather)
                         //here we set the temp
@@ -73,19 +76,22 @@ const ShowAdventures = (props) => {
     }, [updated, id])
 
     //we put coordinates in the array so that the mapbox map will redraw every time the coordinates change. We did this so it wouldn't try to render before we set coordinates
+    let googleMap= (<p></p>)
     useEffect(()=> {
         //if coordinates is truthy render the map
-        if(coordinates) {
+        if(coordinates.lat != 0) {
             //sets the map height so that it's bigger than zero
             setMapHeight('400px')
-            if (map.current) return // initialize map only once
-            map.current = new mapboxgl.Map({
-                container: mapContainer.current,
-                style: 'mapbox://styles/mapbox/streets-v11',
-                //center on the lat and lon taken from the zip code
-                center: [coordinates.lon, coordinates.lat],
-                zoom: 15
-            })
+           
+    //         )
+    //         // if (map.current) return // initialize map only once
+    //         // map.current = new mapboxgl.Map({
+    //         //     container: mapContainer.current,
+    //         //     style: 'mapbox://styles/mapbox/streets-v11',
+    //         //     //center on the lat and lon taken from the zip code
+    //         //     center: [coordinates.lon, coordinates.lat],
+    //         //     zoom: 15
+    //         // })
         } 
     }, [coordinates])
 
@@ -192,8 +198,17 @@ const ShowAdventures = (props) => {
                         }   
                     </Card.Body>
                     {/* this is the mapbox map */}
-                    <div>
-                        <div ref={mapContainer} className="map-container" style={{height: `${mapHeight}`}}/>
+                    <div style={{height:{mapHeight}}}>
+                        {/* <div ref={mapContainer} className="map-container" style={{height: `${mapHeight}`}}/> */}
+                        <LoadScript 
+                            googleMapsApiKey={`${googleKey}`}
+                        >
+                            <GoogleMap
+                              mapContainerStyle= {{height:'400px'}}
+                              zoom={17}
+                              center={coordinates}
+                        >   </GoogleMap>
+                        </LoadScript>
                     </div>
                     {/* if the user owns this adventure allow them to add gear, edit, or delete it */}
                     {adventure.owner === user._id && 

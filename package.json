@@ -19,7 +19,8 @@
     "sass": "^1.44.0",
     "uuid": "^8.3.2",
     "web-vitals": "^1.1.2",
-    "worker-loader": "^3.0.8"
+    "worker-loader": "^3.0.8",
+    "@react-google-maps/api": "^2.10.1"
   },
   "scripts": {
     "start": "react-scripts start",
